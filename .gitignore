@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Next.js and build output
+.next/
+out/
+dist/
+
+# TypeScript and tool caches
+*.tsbuildinfo
+.eslintcache
+.turbo/
+.cache/
+coverage/
+.nyc_output/
+
+# Local environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# OS, editor, and local temp files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tmp
+*.log
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Private writing workspace and unpublished local drafts
+private-notes/
+drafts/
+content/**/_private/
+*.local.md
+
+# Local agent instructions and AI-assisted design/research artifacts
+AGENTS.md
+.lazyweb/
+skills/
+
+# Local Docker overrides
+docker-compose.override.yml
