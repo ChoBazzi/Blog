@@ -1,4 +1,4 @@
-import Link from "next/link";
+/* eslint-disable @next/next/no-html-link-for-pages */
 
 const navItems = [
   { href: "/about", label: "About" },
@@ -11,17 +11,17 @@ const navItems = [
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link className="brand" href="/" aria-label="Home">
+      <a className="brand" href="/" aria-label="Home">
         <span className="brand-mark" aria-hidden="true">
           B
         </span>
         <span>bazzi.docs</span>
-      </Link>
+      </a>
       <nav className="nav" aria-label="Primary navigation">
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href}>
+          <a key={item.href} href={item.href}>
             {item.label}
-          </Link>
+          </a>
         ))}
       </nav>
     </header>

@@ -19,9 +19,9 @@ export default function AboutPage() {
         <div>
           <h2>현재 스택</h2>
           <ul className="plain-list">
-            <li>Frontend: React, Next.js, TypeScript</li>
-            <li>Content: Markdown, Obsidian</li>
-            <li>Deploy: Docker, NAS, Cloudflare DNS</li>
+            <li>Frontend: </li>
+            <li>Content: </li>
+            <li>Deploy: </li>
           </ul>
         </div>
       </div>

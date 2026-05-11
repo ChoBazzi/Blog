@@ -36,6 +36,13 @@ export function ArticleLayout({ collection, post }: ArticleLayoutProps) {
       </aside>
 
       <article className="article-shell">
+        {post.cover ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className="article-cover" src={post.cover} alt="" />
+        ) : null}
+        <div className="page-icon" aria-hidden="true">
+          {collection === "projects" ? "🛠️" : collection === "notes" ? "📝" : "📄"}
+        </div>
         <p className="eyebrow">{collectionLabels[collection]}</p>
         <h1>{post.title}</h1>
         <p className="article-description">{post.description}</p>

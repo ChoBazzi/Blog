@@ -47,5 +47,9 @@ AGENTS.md
 .lazyweb/
 skills/
 
+# Local Notion exports used as source material
+노션/
+노션/
+
 # Local Docker overrides
 docker-compose.override.yml

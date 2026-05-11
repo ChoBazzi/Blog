@@ -12,6 +12,7 @@ export type PostMeta = {
   date: string;
   tags: string[];
   category?: string;
+  cover?: string;
   published: boolean;
 };
 
@@ -71,6 +72,7 @@ async function readPost(collection: Collection, slug: string): Promise<Post> {
 
   return {
     ...meta,
+    cover: meta.cover ?? extractFirstImage(body),
     body,
     headings: extractHeadings(body),
     html: markdownToHtml(body),
@@ -132,6 +134,7 @@ function normalizeMeta(data: Record<string, unknown>, slug: string): PostMeta {
     date: asString(data.date, "1970-01-01"),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     category: typeof data.category === "string" ? data.category : undefined,
+    cover: typeof data.cover === "string" ? data.cover : undefined,
     published: data.published === true,
   };
 }
@@ -251,6 +254,11 @@ function extractHeadings(markdown: string): Heading[] {
 
       return [];
     });
+}
+
+function extractFirstImage(markdown: string) {
+  const match = markdown.match(/!\[[^\]]*]\(([^)]+)\)/);
+  return match?.[1];
 }
 
 function slugify(value: string) {
