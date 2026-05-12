@@ -1,11 +1,11 @@
 export const metadata = {
-  title: "About",
+  title: "About / Contact",
 };
 
 export default function AboutPage() {
   return (
     <section className="page-shell">
-      <p className="eyebrow">About</p>
+      <p className="eyebrow">About / Contact</p>
       <h1>문제를 끝까지 추적하고, 기록으로 복기하는 개발자</h1>
       <div className="content-grid">
         <div>
@@ -24,6 +24,21 @@ export default function AboutPage() {
             <li>Deploy: </li>
           </ul>
         </div>
+      </div>
+
+      <div id="kakaotech-bootcamp" className="link-panel">
+        <h2>카카오테크 부트캠프</h2>
+        <p>
+          백엔드 개발 역량을 중심으로 학습하고, 프로젝트 경험과 문제 해결 과정을
+          포트폴리오에 정리하고 있습니다.
+        </p>
+      </div>
+
+      <div className="link-panel">
+        <h2>연락처와 외부 링크</h2>
+        <a href="mailto:hyeon.s2.dev@gmail.com">hyeon.s2.dev@gmail.com</a>
+        <a href="https://github.com/ChoBazzi">GitHub</a>
+        <a href="https://www.linkedin.com/in/chobazzi/">LinkedIn</a>
       </div>
     </section>
   );

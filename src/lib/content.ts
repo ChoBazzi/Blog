@@ -31,13 +31,13 @@ export type Heading = {
 };
 
 export const collectionLabels: Record<Collection, string> = {
-  blog: "Blog",
+  blog: "Posts",
   notes: "Notes",
   projects: "Projects",
 };
 
 export const collectionPaths: Record<Collection, string> = {
-  blog: "/blog",
+  blog: "/posts",
   notes: "/notes",
   projects: "/projects",
 };

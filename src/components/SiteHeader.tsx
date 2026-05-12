@@ -2,10 +2,10 @@
 
 const navItems = [
   { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/notes", label: "Notes" },
-  { href: "/contact", label: "Contact" },
+  { href: "/posts", label: "전체 게시글" },
+  { href: "/projects", label: "프로젝트" },
+  { href: "/dev-log", label: "Dev Log" },
+  { href: "/notes", label: "공부 노트" },
 ];
 
 export function SiteHeader() {

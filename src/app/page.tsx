@@ -3,6 +3,80 @@
 import { PostList } from "@/components/PostList";
 import { getCollection } from "@/lib/content";
 
+const treeItems: Array<{
+  href: string;
+  label: string;
+  imageSrc: string;
+  className?: string;
+}> = [
+  {
+    href: "/",
+    label: "Home",
+    imageSrc: "/icons/home.png",
+  },
+  {
+    href: "/posts",
+    label: "전체 게시글",
+    imageSrc: "/icons/icon_p.png",
+  },
+  {
+    href: "/projects",
+    label: "프로젝트",
+    imageSrc: "/icons/icon_p.png",
+  },
+  {
+    href: "/dev-log",
+    label: "Dev Log",
+    imageSrc: "/icons/icon_d.png",
+  },
+  {
+    href: "/notes",
+    label: "공부 노트",
+    imageSrc: "/icons/icon_n.png",
+  },
+  {
+    href: "/kakaotech-bootcamp",
+    label: "카카오테크 부트캠프",
+    className: "tree-separated",
+    imageSrc: "/icons/katebu.webp",
+  },
+  {
+    href: "/hobby",
+    label: "이것저것",
+    className: "tree-separated tree-group",
+    imageSrc: "/icons/icon_coffee.png",
+  },
+];
+
+function ProfileCard({ className = "" }: { className?: string }) {
+  return (
+    <aside className={["profile-card", className].filter(Boolean).join(" ")} aria-label="Profile">
+      <img className="profile-avatar" src="/profile.jpg" alt="조현식 프로필 사진" aria-hidden="true"></img>
+      <h2>조현식</h2>
+      <p>여러가지 만들어보는 백엔드 개발자 지망생입니다.</p>
+
+      <a className="profile-button" href="/about">
+        About
+      </a>
+
+      <dl className="profile-meta">
+        <div>
+          <dt>Focus</dt>
+          <dd>Web, Backend, AI, Deployment</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>Next.js, TypeScript, Django, Spring Boot</dd>
+        </div>
+        <div>
+          <dt>Writing</dt>
+          <dd>Projects, retrospectives, study notes</dd>
+        </div>
+      </dl>
+    </aside>
+  );
+}
+
 export default async function Home() {
   const [projects, posts, notes] = await Promise.all([
     getCollection("projects"),
@@ -20,30 +94,24 @@ export default async function Home() {
             <span>Repository</span>
           </div>
           <nav className="tree-nav">
-            <a className="tree-root" href="/">
-              portfolio-blog
-            </a>
-            <a href="/blog">
-              <span>blog</span>
-            </a>
-            <a href="/notes">
-              <span>notes</span>
-            </a>
-            <a href="/projects">
-              <span>projects</span>
-            </a>
-            <a href="/about">
-              <span>about</span>
-            </a>
-            <a href="/contact">
-              <span>contact</span>
-            </a>
+            {treeItems.map((item) => (
+              <a
+                key={item.href}
+                className={[item.href === "/" ? "tree-root" : "", item.className ?? ""]
+                  .filter(Boolean)
+                  .join(" ")}
+                href={item.href}
+              >
+                <img className="tree-item-icon tree-item-image" src={item.imageSrc} alt="" />
+                <span>{item.label}</span>
+              </a>
+            ))}
           </nav>
 
           <div className="tree-section">
             <p className="sidebar-label">Recent projects</p>
             {projectPosts.slice(0, 4).map((post) => (
-              <a key={post.slug} href={`/blog/${post.slug}`}>
+              <a key={post.slug} href={`/posts/${post.slug}`}>
                 {post.title}
               </a>
             ))}
@@ -85,7 +153,7 @@ export default async function Home() {
             <div className="section-heading">
               <p className="eyebrow">Pinned</p>
               <h2>프로젝트 글</h2>
-              <a href="/blog">View all</a>
+              <a href="/posts">View all</a>
             </div>
             <PostList
               posts={projectPosts.length > 0 ? projectPosts : projects.slice(0, 3)}
@@ -96,8 +164,9 @@ export default async function Home() {
           <section className="section two-column">
             <div>
               <div className="section-heading">
-                <p className="eyebrow">Retrospective</p>
-                <h2>최근 회고</h2>
+                <p className="eyebrow">Dev Log</p>
+                <h2>개발 기록</h2>
+                <a href="/dev-log">View all</a>
               </div>
               <PostList posts={retrospectivePosts.slice(0, 2)} collection="blog" />
             </div>
@@ -111,33 +180,13 @@ export default async function Home() {
           </section>
         </div>
 
-        <aside className="profile-card" aria-label="Profile">
-          <div className="profile-avatar" aria-hidden="true">
-            B
-          </div>
-          <h2>조현식</h2>
-          <p>프로젝트를 만들고, 배포하고, 회고로 남기는 개발자 지망생입니다.</p>
-
-          <a className="profile-button" href="/contact">
-            Contact
-          </a>
-
-          <dl className="profile-meta">
-            <div>
-              <dt>Focus</dt>
-              <dd>Web, Backend, AI, Deployment</dd>
-            </div>
-            <div>
-              <dt>Stack</dt>
-              <dd>Next.js, TypeScript, Django, Spring Boot</dd>
-            </div>
-            <div>
-              <dt>Writing</dt>
-              <dd>Projects, retrospectives, study notes</dd>
-            </div>
-          </dl>
-        </aside>
+        <ProfileCard className="profile-card-desktop" />
       </section>
+
+      <details className="profile-drawer">
+        <summary aria-label="프로필 열기">Profile</summary>
+        <ProfileCard />
+      </details>
     </>
   );
 }

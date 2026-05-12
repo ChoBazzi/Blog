@@ -1,15 +1,31 @@
 type PaginationProps = {
   basePath: string;
   currentPage: number;
+  query?: Record<string, string | undefined>;
   totalPages: number;
 };
 
-export function Pagination({ basePath, currentPage, totalPages }: PaginationProps) {
+export function Pagination({ basePath, currentPage, query = {}, totalPages }: PaginationProps) {
   if (totalPages <= 1) {
     return null;
   }
 
-  const pageHref = (page: number) => (page === 1 ? basePath : `${basePath}?page=${page}`);
+  const pageHref = (page: number) => {
+    const params = new URLSearchParams();
+
+    Object.entries(query).forEach(([key, value]) => {
+      if (value) {
+        params.set(key, value);
+      }
+    });
+
+    if (page > 1) {
+      params.set("page", String(page));
+    }
+
+    const queryString = params.toString();
+    return queryString ? `${basePath}?${queryString}` : basePath;
+  };
 
   return (
     <nav className="pagination" aria-label="Pagination">

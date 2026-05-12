@@ -5,8 +5,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Portfolio Blog",
-    template: "%s | Portfolio Blog",
+    default: "Developer Portfolio",
+    template: "%s | Developer Portfolio",
   },
   description: "신입 개발자 포트폴리오, 프로젝트 기록, 회고, 공부 노트를 정리하는 개인 웹페이지입니다.",
 };

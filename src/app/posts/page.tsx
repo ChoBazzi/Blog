@@ -7,15 +7,15 @@ import { getCollection } from "@/lib/content";
 import { getPageNumber, paginate } from "@/lib/pagination";
 
 export const metadata = {
-  title: "프로젝트",
+  title: "전체 게시글",
 };
 
 type PageProps = {
   searchParams: Promise<{ category?: string | string[]; page?: string | string[] }>;
 };
 
-export default async function ProjectsPage({ searchParams }: PageProps) {
-  const posts = await getCollection("projects");
+export default async function PostsPage({ searchParams }: PageProps) {
+  const posts = await getCollection("blog");
   const { category, page } = await searchParams;
   const categories = getCategories(posts);
   const categoryParam = getCategoryParam(category);
@@ -25,11 +25,11 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
 
   return (
     <section className="page-shell collection-page">
-      <CollectionHero eyebrow="Projects" iconSrc="/icons/project.png" title="프로젝트" />
-      <CategoryFilter basePath="/projects" categories={categories} selectedCategory={selectedCategory} />
-      <PostList posts={paginated.items} collection="projects" />
+      <CollectionHero eyebrow="All Posts" iconSrc="/icons/project.png" title="전체 게시글" />
+      <CategoryFilter basePath="/posts" categories={categories} selectedCategory={selectedCategory} />
+      <PostList posts={paginated.items} collection="blog" />
       <Pagination
-        basePath="/projects"
+        basePath="/posts"
         currentPage={paginated.currentPage}
         query={{ category: selectedCategory }}
         totalPages={paginated.totalPages}

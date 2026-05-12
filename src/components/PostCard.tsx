@@ -1,5 +1,5 @@
 import type { Collection, PostMeta } from "@/lib/content";
-import { collectionPaths } from "@/lib/content";
+import { collectionLabels, collectionPaths } from "@/lib/content";
 
 type PostCardProps = {
   post: PostMeta;
@@ -20,7 +20,7 @@ export function PostCard({ post, collection }: PostCardProps) {
         )}
         <div className="post-card-body">
           <div className="post-card-meta">
-            <span>{collection}</span>
+            <span>{collectionLabels[collection]}</span>
             <time dateTime={post.date}>{post.date}</time>
             {post.category ? <span>{post.category}</span> : null}
           </div>

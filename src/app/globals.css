@@ -1,3 +1,35 @@
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/fonts/nanum-square/NanumSquareL.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/fonts/nanum-square/NanumSquareR.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/fonts/nanum-square/NanumSquareB.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/fonts/nanum-square/NanumSquareEB.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 800 900;
+}
+
 :root {
   --background: #ffffff;
   --surface: #ffffff;
@@ -30,9 +62,11 @@ body {
   background: var(--background);
   color: var(--text);
   font-family:
-    Arial,
+    "NanumSquare",
+    "NanumSquare Neo",
     "Apple SD Gothic Neo",
     "Noto Sans KR",
+    Arial,
     sans-serif;
   line-height: 1.65;
 }
@@ -155,7 +189,6 @@ main {
 
 .tree-nav a,
 .tree-section a {
-  display: block;
   overflow: hidden;
   border-radius: 7px;
   padding: 7px 9px;
@@ -163,6 +196,16 @@ main {
   font-size: 0.88rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.tree-nav a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tree-section a {
+  display: block;
 }
 
 .tree-nav a:hover,
@@ -176,13 +219,44 @@ main {
   font-weight: 750;
 }
 
-.tree-nav a:not(.tree-root) span::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 1px;
-  margin: 0 8px 4px 2px;
-  background: var(--line-strong);
+.tree-separated {
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 11px !important;
+}
+
+.tree-group {
+  color: var(--muted-strong) !important;
+  font-weight: 650;
+}
+
+.tree-item-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-raised);
+  color: var(--muted);
+  padding: 5px;
+}
+
+.tree-item-image {
+  display: block;
+  padding: 0;
+  object-fit: cover;
+}
+
+.tree-root .tree-item-icon {
+  border-color: var(--line-strong);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tree-nav a:hover .tree-item-icon {
+  border-color: var(--line-strong);
+  background: var(--surface);
+  color: var(--accent);
 }
 
 .tree-section {
@@ -252,17 +326,34 @@ main {
   padding: 18px;
 }
 
+.profile-drawer {
+  display: none;
+}
+
+.profile-drawer summary {
+  display: none;
+}
+
+.profile-drawer summary::-webkit-details-marker {
+  display: none;
+}
+
+.profile-drawer .profile-card {
+  width: 100%;
+}
+
 .profile-avatar {
   display: grid;
-  width: 96px;
-  height: 96px;
+  width: 144px;
+  height: 144px;
   place-items: center;
   border: 1px solid var(--line-strong);
   border-radius: 50%;
   background: linear-gradient(135deg, #f8fafc, #eef2ff);
   color: var(--accent);
-  font-size: 2.6rem;
+  font-size: 3.5rem;
   font-weight: 850;
+  object-fit: cover;
 }
 
 .profile-card h2 {
@@ -673,6 +764,58 @@ main {
   margin-top: 28px;
 }
 
+.collection-hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.collection-hero-icon {
+  width: 150px;
+  height: 150px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-raised);
+  object-fit: cover;
+}
+
+.collection-hero .eyebrow {
+  margin-bottom: 4px;
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.category-filter a {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 0 13px;
+  color: var(--muted-strong);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.category-filter a:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.category-filter .active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
 .pagination {
   display: flex;
   align-items: center;
@@ -882,6 +1025,54 @@ main {
     grid-template-columns: 210px minmax(0, 1fr);
   }
 
+  .profile-card-desktop {
+    display: none;
+  }
+
+  .profile-drawer {
+    display: block;
+  }
+
+  .profile-drawer summary {
+    display: block;
+    position: fixed;
+    top: 112px;
+    right: 0;
+    z-index: 45;
+    min-height: 42px;
+    border: 1px solid var(--line-strong);
+    border-right: 0;
+    border-radius: 8px 0 0 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 42px;
+    list-style: none;
+    padding: 0 12px;
+  }
+
+  .profile-drawer .profile-card {
+    position: fixed;
+    top: 88px;
+    right: 20px;
+    z-index: 50;
+    width: min(320px, calc(100vw - 40px));
+    max-height: calc(100vh - 108px);
+    overflow: auto;
+    box-shadow: var(--shadow);
+  }
+
+  .profile-drawer:not([open]) .profile-card {
+    display: none;
+  }
+
+  .profile-drawer[open] summary {
+    right: 340px;
+  }
+
   .docs-layout,
   .article-layout {
     grid-template-columns: minmax(0, 1fr);
@@ -913,7 +1104,12 @@ main {
   }
 
   .home-tree,
-  .profile-card {
+  .home-main {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .home-tree {
     position: static;
   }
 
@@ -925,10 +1121,24 @@ main {
     order: 1;
   }
 
-  .profile-card {
-    grid-column: auto;
-    grid-row: auto;
-    order: 3;
+  .profile-drawer summary {
+    top: auto;
+    right: 12px;
+    bottom: 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+  }
+
+  .profile-drawer .profile-card {
+    top: auto;
+    right: 12px;
+    bottom: 70px;
+    width: min(320px, calc(100vw - 24px));
+    max-height: calc(100vh - 92px);
+  }
+
+  .profile-drawer[open] summary {
+    right: 12px;
   }
 
   .readme-body {
@@ -947,6 +1157,16 @@ main {
   .page-shell h1,
   .article-shell h1 {
     font-size: 2.15rem;
+  }
+
+  .collection-hero {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .collection-hero-icon {
+    width: 100px;
+    height: 100px;
   }
 
   .doc-grid,
