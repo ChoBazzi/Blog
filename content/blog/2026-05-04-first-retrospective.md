@@ -15,8 +15,9 @@ published: true
 
 - 글 작성은 Obsidian에서 Markdown으로 관리한다.
 - 웹은 Next.js가 `content/` 폴더를 읽어 정적 페이지로 만든다.
-- 배포는 개인 NAS의 Docker 컨테이너로 운영한다.
-- 도메인은 Cloudflare DNS와 NAS 리버스 프록시를 통해 연결한다.
+- ~~배포는 개인 NAS의 Docker 컨테이너로 운영한다.~~
+- vercel로 간단하게 배포(백엔드가 필요없다)
+- ~~도메인은 Cloudflare DNS와 NAS 리버스 프록시를 통해 연결한다.~~
 
 ## 기대하는 효과
 

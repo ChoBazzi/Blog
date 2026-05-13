@@ -26,13 +26,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div id="kakaotech-bootcamp" className="link-panel">
-        <h2>카카오테크 부트캠프</h2>
-        <p>
-          백엔드 개발 역량을 중심으로 학습하고, 프로젝트 경험과 문제 해결 과정을
-          포트폴리오에 정리하고 있습니다.
-        </p>
-      </div>
+    
 
       <div className="link-panel">
         <h2>연락처와 외부 링크</h2>

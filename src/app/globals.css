@@ -113,14 +113,17 @@ main {
 
 .brand-mark {
   display: inline-grid;
-  width: 28px;
-  height: 28px;
+  width: 230px;
+  height: auto;
+  aspect-ratio: 1244 / 427;
+  overflow: visible;
   place-items: center;
-  border: 1px solid var(--line-strong);
-  border-radius: 7px;
-  background: var(--surface-raised);
-  color: var(--accent);
-  font-size: 0.82rem;
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .nav {
@@ -1096,6 +1099,10 @@ main {
     align-items: center;
     flex-direction: row;
     padding: 14px 0;
+  }
+
+  .brand-mark {
+    width: 170px;
   }
 
   .nav {

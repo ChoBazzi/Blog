@@ -15,9 +15,8 @@ export function SiteHeader() {
     <header className="site-header">
       <a className="brand" href="/" aria-label="Home">
         <span className="brand-mark" aria-hidden="true">
-          B
+          <img src="/icons/logo.png" alt="" />
         </span>
-        <span>bazzi.docs</span>
       </a>
       <nav className="nav" aria-label="Primary navigation">
         {navItems.map((item) => (
@@ -43,7 +42,7 @@ export function SiteHeader() {
           <div className="mobile-menu-profile">
             <img src="/profile.jpg" alt="" />
             <div>
-              <strong>조현식</strong>
+              <strong>조현식(Bazzi)</strong>
               <span>백엔드 개발자 지망생</span>
             </div>
             <a href="/about">About</a>

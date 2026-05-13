@@ -52,7 +52,7 @@ function ProfileCard({ className = "" }: { className?: string }) {
   return (
     <aside className={["profile-card", className].filter(Boolean).join(" ")} aria-label="Profile">
       <img className="profile-avatar" src="/profile.jpg" alt="조현식 프로필 사진" aria-hidden="true"></img>
-      <h2>조현식</h2>
+      <h2>조현식(Bazzi)</h2>
       <p>여러가지 만들어보는 백엔드 개발자 지망생입니다.</p>
 
       <a className="profile-button" href="/about">
