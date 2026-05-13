@@ -15,7 +15,7 @@ export function SiteHeader() {
     <header className="site-header">
       <a className="brand" href="/" aria-label="Home">
         <span className="brand-mark" aria-hidden="true">
-          <img src="/icons/logo.png" alt="" />
+          <img src="/icons/logo.PNG" alt="" />
         </span>
       </a>
       <nav className="nav" aria-label="Primary navigation">
