@@ -10,10 +10,13 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "validate:content": "node scripts/validate-content.mjs",
+    "harness:portfolio": "node scripts/portfolio-writing-harness.mjs",
+    "harness:portfolio:strict": "node scripts/portfolio-writing-harness.mjs --strict",
     "harness": "node scripts/harness.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
+    "mermaid": "^11.15.0",
     "next": "^15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

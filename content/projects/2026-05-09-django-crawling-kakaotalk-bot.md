@@ -1,9 +1,10 @@
 ---
-title: "Django 기반 크롤링 서버와 카카오톡 알림 봇 회고"
-description: "게임 커뮤니티 공지 누락 문제를 해결하기 위해 Django, Celery, Redis 기반 알림 시스템을 구축한 개인 프로젝트 회고입니다."
-date: "2026-05-09"
+title: Django 기반 크롤링 서버와 카카오톡 알림 봇
+description: 게임 커뮤니티 공지 누락 문제를 해결하기 위해 Django, Celery, Redis 기반 알림 시스템을 구축한 개인 프로젝트 회고입니다.
+date: 2026-05-01
 tags: ["Django", "Celery", "Redis", "MySQL", "Nginx"]
-category: "project"
+category: project
+cover: /covers/2026-05-09-django-crawling-kakaotalk-bot.jpg
 published: true
 ---
 

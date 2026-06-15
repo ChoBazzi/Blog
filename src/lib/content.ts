@@ -23,6 +23,7 @@ export type Post = PostMeta & {
 };
 
 const contentRoot = path.join(process.cwd(), "content");
+const defaultCover = "/covers/default.svg";
 
 export type Heading = {
   id: string;
@@ -31,7 +32,7 @@ export type Heading = {
 };
 
 export const collectionLabels: Record<Collection, string> = {
-  blog: "Posts",
+  blog: "Dev log",
   notes: "Notes",
   projects: "Projects",
 };
@@ -72,11 +73,29 @@ async function readPost(collection: Collection, slug: string): Promise<Post> {
 
   return {
     ...meta,
-    cover: meta.cover ?? extractFirstImage(body),
+    cover: await resolveCover(meta.cover ?? extractFirstImage(body)),
     body,
     headings: extractHeadings(body),
     html: markdownToHtml(body),
   };
+}
+
+async function resolveCover(cover: string | undefined) {
+  if (!cover) {
+    return defaultCover;
+  }
+
+  if (!cover.startsWith("/")) {
+    return cover;
+  }
+
+  const filepath = path.join(process.cwd(), "public", cover.slice(1));
+  const exists = await fs
+    .access(filepath)
+    .then(() => true)
+    .catch(() => false);
+
+  return exists ? cover : defaultCover;
 }
 
 function parseFrontmatter(raw: string) {
@@ -150,6 +169,7 @@ function markdownToHtml(markdown: string) {
   let list: string[] = [];
   let code: string[] = [];
   let inCodeBlock = false;
+  let codeLanguage = "";
 
   const flushParagraph = () => {
     if (paragraph.length > 0) {
@@ -166,17 +186,40 @@ function markdownToHtml(markdown: string) {
   };
 
   const flushCode = () => {
-    html.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
+    const source = code.join("\n");
+    if (codeLanguage === "mermaid") {
+      html.push(
+        [
+          '<section class="diagram-card" data-mermaid-diagram>',
+          '<div class="diagram-card-header">',
+          "<span>Architecture</span>",
+          "<strong>System Flow</strong>",
+          "</div>",
+          '<div class="diagram-render" aria-live="polite"></div>',
+          '<pre class="diagram-source"><code>',
+          escapeHtml(source),
+          "</code></pre>",
+          "</section>",
+        ].join(""),
+      );
+    } else {
+      const languageClass = codeLanguage ? ` class="language-${escapeHtml(codeLanguage)}"` : "";
+      html.push(`<pre><code${languageClass}>${escapeHtml(source)}</code></pre>`);
+    }
     code = [];
+    codeLanguage = "";
   };
 
-  for (const line of lines) {
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+
     if (line.startsWith("```")) {
       if (inCodeBlock) {
         flushCode();
       } else {
         flushParagraph();
         flushList();
+        codeLanguage = line.slice(3).trim().split(/\s+/)[0].toLowerCase();
       }
       inCodeBlock = !inCodeBlock;
       continue;
@@ -190,6 +233,32 @@ function markdownToHtml(markdown: string) {
     if (!line.trim()) {
       flushParagraph();
       flushList();
+      continue;
+    }
+
+    if (line.startsWith("::architecture ")) {
+      flushParagraph();
+      flushList();
+      const mapId = line.slice("::architecture ".length).trim().split(/\s+/)[0];
+      if (mapId) {
+        html.push(`<div data-architecture-map="${escapeHtml(mapId)}"></div>`);
+      }
+      continue;
+    }
+
+    if (isTableStart(line, lines[index + 1])) {
+      flushParagraph();
+      flushList();
+      const tableLines = [line, lines[index + 1]];
+      index += 2;
+
+      while (index < lines.length && isTableRow(lines[index])) {
+        tableLines.push(lines[index]);
+        index += 1;
+      }
+
+      index -= 1;
+      html.push(renderTable(tableLines));
       continue;
     }
 
@@ -216,6 +285,14 @@ function markdownToHtml(markdown: string) {
       continue;
     }
 
+    if (line.startsWith("#### ")) {
+      flushParagraph();
+      flushList();
+      const text = line.slice(5);
+      html.push(`<h4>${inline(text)}</h4>`);
+      continue;
+    }
+
     if (line.startsWith("- ")) {
       flushParagraph();
       list.push(line.slice(2));
@@ -236,6 +313,48 @@ function markdownToHtml(markdown: string) {
   flushList();
 
   return html.join("\n");
+}
+
+function isTableStart(line: string, nextLine: string | undefined) {
+  return isTableRow(line) && Boolean(nextLine && isTableSeparator(nextLine));
+}
+
+function isTableRow(line: string | undefined) {
+  return Boolean(line && line.trim().startsWith("|") && line.trim().endsWith("|"));
+}
+
+function isTableSeparator(line: string) {
+  const cells = parseTableRow(line);
+  return cells.length > 0 && cells.every((cell) => /^:?-{3,}:?$/.test(cell.trim()));
+}
+
+function renderTable(lines: string[]) {
+  const [headerLine, , ...bodyLines] = lines;
+  const headers = parseTableRow(headerLine);
+  const body = bodyLines.map(parseTableRow);
+
+  return [
+    '<div class="table-scroll">',
+    "<table>",
+    "<thead>",
+    `<tr>${headers.map((cell) => `<th>${inline(cell.trim())}</th>`).join("")}</tr>`,
+    "</thead>",
+    "<tbody>",
+    body
+      .map((row) => `<tr>${headers.map((_, index) => `<td>${inline((row[index] ?? "").trim())}</td>`).join("")}</tr>`)
+      .join(""),
+    "</tbody>",
+    "</table>",
+    "</div>",
+  ].join("");
+}
+
+function parseTableRow(line: string) {
+  return line
+    .trim()
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|");
 }
 
 function extractHeadings(markdown: string): Heading[] {
@@ -271,6 +390,7 @@ function slugify(value: string) {
 
 function inline(text: string) {
   return escapeHtml(text)
+    .replace(/&lt;br\s*\/?&gt;/gi, "<br />")
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />')

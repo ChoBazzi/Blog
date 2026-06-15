@@ -4,6 +4,7 @@ description: "NAS, Docker, Cloudflare, Markdown 기반으로 개인 웹페이지
 date: "2026-05-04"
 tags: ["Retrospective", "Portfolio", "Docker"]
 category: "retrospective"
+cover: "/covers/2026-05-04-first-retrospective.jpg"
 published: true
 ---
 

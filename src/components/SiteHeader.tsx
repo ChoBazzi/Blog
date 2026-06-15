@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 
 import { categoryItems } from "@/lib/navigation";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
   { href: "/about", label: "About" },
-  { href: "/posts", label: "전체 게시글" },
+  { href: "/posts", label: "전체게시글" },
   { href: "/projects", label: "프로젝트" },
-  { href: "/dev-log", label: "Dev Log" },
+  { href: "/dev-log", label: "Dev log" },
   { href: "/notes", label: "공부 노트" },
 ];
 
@@ -18,13 +19,16 @@ export function SiteHeader() {
           <img src="/icons/logo.PNG" alt="" />
         </span>
       </a>
-      <nav className="nav" aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
+      <div className="header-actions">
+        <nav className="nav" aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <ThemeToggle />
+      </div>
       <details className="mobile-category-menu">
         <summary aria-label="메뉴 열기">
           <span aria-hidden="true"></span>

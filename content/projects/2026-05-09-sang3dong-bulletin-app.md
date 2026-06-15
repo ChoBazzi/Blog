@@ -1,9 +1,10 @@
 ---
-title: "상3동성당 주보앱 개발 회고"
-description: "종이 주보의 정보 전달 문제를 해결하기 위해 React Native 앱을 기획, 개발, 배포, 운영한 개인 프로젝트 회고입니다."
-date: "2026-05-09"
+title: 상3동성당 주보앱 개발
+description: 종이 주보의 정보 전달 문제를 해결하기 위해 React Native 앱을 기획, 개발, 배포, 운영한 개인 프로젝트 회고입니다.
+date: 2026-05-09
 tags: ["React Native", "Django", "Python", "Mobile"]
-category: "project"
+category: project
+cover: "/covers/2026-05-09-sang3dong-bulletin-app.jpg"
 published: true
 ---
 

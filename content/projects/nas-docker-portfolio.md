@@ -1,10 +1,11 @@
 ---
-title: "NAS Docker 포트폴리오 배포"
-description: "개인 NAS, Docker, Cloudflare DNS를 이용해 포트폴리오 블로그를 배포하는 프로젝트입니다."
-date: "2026-05-04"
+title: NAS Docker 포트폴리오 배포
+description: 개인 NAS, Docker, Cloudflare DNS를 이용해 포트폴리오 블로그를 배포하는 프로젝트입니다.
+date: 2026-05-04
 tags: ["Next.js", "Docker", "NAS", "Cloudflare"]
-category: "portfolio"
-published: true
+category: portfolio
+cover: /covers/nas-docker-portfolio.jpg
+published: false
 ---
 
 ## 문제

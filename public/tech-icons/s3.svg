@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="S3 Storage">
+  <rect width="64" height="64" rx="14" fill="#fff7ed"/>
+  <ellipse cx="32" cy="18" rx="16" ry="7" fill="#f97316"/>
+  <path d="M16 18v27c0 4 7 8 16 8s16-4 16-8V18" fill="#fb923c"/>
+  <path d="M16 31c0 4 7 8 16 8s16-4 16-8" fill="none" stroke="#fff7ed" stroke-width="3"/>
+  <path d="M16 22c0 4 7 8 16 8s16-4 16-8" fill="none" stroke="#fff7ed" stroke-width="3"/>
+</svg>

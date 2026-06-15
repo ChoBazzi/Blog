@@ -7,7 +7,7 @@ import { getCollection } from "@/lib/content";
 import { getPageNumber, paginate } from "@/lib/pagination";
 
 export const metadata = {
-  title: "Dev Log",
+  title: "Dev log",
 };
 
 type PageProps = {
@@ -25,7 +25,7 @@ export default async function DevLogPage({ searchParams }: PageProps) {
 
   return (
     <section className="page-shell collection-page">
-      <CollectionHero eyebrow="Dev Log" iconSrc="/icons/devlog.png" title="개발 과정과 회고 기록" />
+      <CollectionHero eyebrow="Dev log" iconSrc="/icons/devlog.png" title="개발 과정과 회고 기록" />
       <CategoryFilter basePath="/dev-log" categories={categories} selectedCategory={selectedCategory} />
       <PostList posts={paginated.items} collection="blog" />
       <Pagination

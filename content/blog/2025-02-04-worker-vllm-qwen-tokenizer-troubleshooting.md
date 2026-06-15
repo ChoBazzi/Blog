@@ -1,9 +1,10 @@
 ---
-title: "RunPod vLLM Qwen 토크나이저 충돌 해결"
-description: "RunPod worker-vLLM 환경에서 Qwen 계열 토크나이저와 vLLM V0/V1 API 충돌을 해결한 트러블슈팅 기록입니다."
-date: "2026-02-04"
+title: RunPod vLLM Qwen 토크나이저 충돌 해결
+description: RunPod worker-vLLM 환경에서 Qwen 계열 토크나이저와 vLLM V0/V1 API 충돌을 해결한 트러블슈팅 기록입니다.
+date: 2026-02-04
 tags: ["카테부", "vLLM", "RunPod", "Qwen", "Transformers", "Troubleshooting"]
-category: "트러블슈팅"
+category: 트러블슈팅
+cover: /covers/2026-05-14-18team-ai.jpg
 published: true
 ---
 
@@ -70,3 +71,5 @@ RunPod handler
 특히 vLLM은 버전 변화에 따라 엔진 클래스, 설정 인자, serving 초기화 방식이 빠르게 바뀐다. 그래서 모델만 교체하는 작업처럼 보여도 실제로는 런타임 버전, 토크나이저 구현, OpenAI 호환 계층까지 함께 확인해야 한다.
 
 이 트러블슈팅을 통해 RunPod에서 vLLM을 올릴 때는 버전 고정과 엔진 초기화 구조를 먼저 확인해야 한다는 기준이 생겼다. 앞으로 모델을 바꾸거나 vLLM을 업그레이드할 때도 릴리스 노트와 지원 `transformers` 조합을 먼저 확인하고, deprecated 인자가 남아 있지 않은지 점검할 것이다.
+
+그리고 수정한 내용을 PR을 올려 오픈소스에 기여할 수 있다는 것도 알게 되었다.

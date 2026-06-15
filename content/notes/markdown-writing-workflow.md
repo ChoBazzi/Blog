@@ -1,10 +1,11 @@
 ---
-title: "Markdown 작성 워크플로"
-description: "Obsidian에서 작성한 Markdown을 웹페이지 콘텐츠로 사용하기 위한 기본 규칙입니다."
-date: "2026-05-04"
+title: Markdown 작성 워크플로
+description: Obsidian에서 작성한 Markdown을 웹페이지 콘텐츠로 사용하기 위한 기본 규칙입니다.
+date: 2026-05-04
 tags: ["Markdown", "Obsidian", "Writing"]
-category: "study"
-published: true
+category: study
+cover: /covers/markdown-writing-workflow.jpg
+published: false
 ---
 
 ## 기본 규칙

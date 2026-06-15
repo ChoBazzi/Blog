@@ -16,7 +16,7 @@ const treeItems: Array<{
   },
   {
     href: "/posts",
-    label: "전체 게시글",
+    label: "전체게시글",
     imageSrc: "/icons/icon_p.png",
   },
   {
@@ -26,7 +26,7 @@ const treeItems: Array<{
   },
   {
     href: "/dev-log",
-    label: "Dev Log",
+    label: "Dev log",
     imageSrc: "/icons/icon_d.png",
   },
   {
@@ -53,7 +53,7 @@ function ProfileCard({ className = "" }: { className?: string }) {
     <aside className={["profile-card", className].filter(Boolean).join(" ")} aria-label="Profile">
       <img className="profile-avatar" src="/profile.jpg" alt="조현식 프로필 사진" aria-hidden="true"></img>
       <h2>조현식(Bazzi)</h2>
-      <p>여러가지 만들어보는 백엔드 개발자 지망생입니다.</p>
+      <p>여러가지 만들어보는 백엔드 주니어 개발자 입니다.</p>
 
       <a className="profile-button" href="/about">
         About
@@ -66,7 +66,7 @@ function ProfileCard({ className = "" }: { className?: string }) {
         </div>
         <div>
           <dt>Stack</dt>
-          <dd>Next.js, TypeScript, Django, Spring Boot</dd>
+          <dd>Spring Boot, Django, FastAPI</dd>
         </div>
         <div>
           <dt>Writing</dt>
@@ -83,7 +83,6 @@ export default async function Home() {
     getCollection("blog"),
     getCollection("notes"),
   ]);
-  const projectPosts = posts.filter((post) => post.category === "project");
   const retrospectivePosts = posts.filter((post) => post.category !== "project");
 
   return (
@@ -110,8 +109,8 @@ export default async function Home() {
 
           <div className="tree-section">
             <p className="sidebar-label">Recent projects</p>
-            {projectPosts.slice(0, 4).map((post) => (
-              <a key={post.slug} href={`/posts/${post.slug}`}>
+            {projects.slice(0, 4).map((post) => (
+              <a key={post.slug} href={`/projects/${post.slug}`}>
                 {post.title}
               </a>
             ))}
@@ -135,7 +134,7 @@ export default async function Home() {
               <div className="readme-grid" aria-label="Portfolio summary">
                 <div>
                   <strong>Write</strong>
-                  <span>Obsidian Markdown</span>
+                  <span>Obsidian Markdown, codex</span>
                 </div>
                 <div>
                   <strong>Build</strong>
@@ -153,18 +152,15 @@ export default async function Home() {
             <div className="section-heading">
               <p className="eyebrow">Pinned</p>
               <h2>프로젝트 글</h2>
-              <a href="/posts">View all</a>
+              <a href="/projects">View all</a>
             </div>
-            <PostList
-              posts={projectPosts.length > 0 ? projectPosts : projects.slice(0, 3)}
-              collection={projectPosts.length > 0 ? "blog" : "projects"}
-            />
+            <PostList className="home-project-list" posts={projects.slice(0, 4)} collection="projects" />
           </section>
 
           <section className="section two-column">
             <div>
               <div className="section-heading">
-                <p className="eyebrow">Dev Log</p>
+                <p className="eyebrow">Dev log</p>
                 <h2>개발 기록</h2>
                 <a href="/dev-log">View all</a>
               </div>

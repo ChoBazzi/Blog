@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Spring Boot">
+  <rect width="64" height="64" rx="14" fill="#ecfdf5"/>
+  <path d="M48 15c-18 1-29 9-31 23-1 8 5 13 13 12 13-2 21-15 18-35Z" fill="#6db33f"/>
+  <path d="M19 45c8-10 16-16 27-21" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M28 50c-7 0-12-5-12-12" fill="none" stroke="#166534" stroke-width="3" stroke-linecap="round"/>
+</svg>

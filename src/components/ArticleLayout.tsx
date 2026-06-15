@@ -1,5 +1,8 @@
+import type { ReactNode } from "react";
 import type { Collection, Post } from "@/lib/content";
 import { collectionLabels } from "@/lib/content";
+import { ArchitectureMap } from "@/components/ArchitectureMap";
+import { MermaidRenderer } from "@/components/MermaidRenderer";
 
 type ArticleLayoutProps = {
   collection: Collection;
@@ -7,6 +10,8 @@ type ArticleLayoutProps = {
 };
 
 export function ArticleLayout({ collection, post }: ArticleLayoutProps) {
+  const articleContent = renderArticleContent(post.html);
+
   return (
     <div className="docs-layout article-layout">
       <aside className="docs-sidebar" aria-label="Content properties">
@@ -50,7 +55,8 @@ export function ArticleLayout({ collection, post }: ArticleLayoutProps) {
           <time dateTime={post.date}>{post.date}</time>
           <span>{post.tags.join(", ")}</span>
         </div>
-        <div className="prose" dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className="prose">{articleContent}</div>
+        <MermaidRenderer />
       </article>
 
       <aside className="toc" aria-label="On this page">
@@ -73,4 +79,32 @@ export function ArticleLayout({ collection, post }: ArticleLayoutProps) {
       </aside>
     </div>
   );
+}
+
+function renderArticleContent(html: string) {
+  const nodes: ReactNode[] = [];
+  const architectureMapPattern = /<div data-architecture-map="([^"]+)"><\/div>/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = architectureMapPattern.exec(html)) !== null) {
+    const htmlBefore = html.slice(lastIndex, match.index);
+    if (htmlBefore) {
+      nodes.push(<ArticleHtml html={htmlBefore} key={`html-${lastIndex}`} />);
+    }
+
+    nodes.push(<ArchitectureMap id={match[1]} key={`architecture-${match.index}-${match[1]}`} />);
+    lastIndex = match.index + match[0].length;
+  }
+
+  const htmlAfter = html.slice(lastIndex);
+  if (htmlAfter) {
+    nodes.push(<ArticleHtml html={htmlAfter} key={`html-${lastIndex}`} />);
+  }
+
+  return nodes.length > 0 ? nodes : <ArticleHtml html={html} />;
+}
+
+function ArticleHtml({ html }: { html: string }) {
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }

@@ -1,9 +1,10 @@
 ---
-title: "BGE-m3-ko 임베딩 서비스 개발 회고"
-description: "FastAPI, SentenceTransformer, Milvus를 사용해 직무 필터링과 시맨틱 캐시를 지원하는 임베딩 서비스를 구현한 프로젝트입니다."
-date: "2026-05-14"
+title: BGE-m3-ko 임베딩 서비스 개발
+description: FastAPI, SentenceTransformer, Milvus를 사용해 직무 필터링과 시맨틱 캐시를 지원하는 임베딩 서비스를 구현한 프로젝트입니다.
+date: 2026-05-14
 tags: ["카테부", "FastAPI", "Python", "Embedding", "Milvus", "Vector DB", "BGE-m3-ko"]
-category: "AI 백엔드"
+category: project
+cover: /covers/2026-05-14-18team-ai.jpg
 published: true
 ---
 
