@@ -8,7 +8,7 @@ import { getCollection } from "@/lib/content";
 import { getPageNumber, paginate } from "@/lib/pagination";
 
 export const metadata = {
-  title: "전체게시글",
+  title: "전체 글",
 };
 
 type PageProps = {
@@ -33,7 +33,7 @@ export default async function PostsPage({ searchParams }: PageProps) {
 
   return (
     <section className="page-shell collection-page">
-      <CollectionHero eyebrow="All Posts" iconSrc="/icons/project.png" title="전체게시글" />
+      <CollectionHero eyebrow="All Posts" iconSrc="/icons/project.png" title="전체 글" />
       <CategoryFilter basePath="/posts" categories={categories} selectedCategory={selectedCategory} />
       <AllPostList entries={paginated.items} />
       <Pagination
