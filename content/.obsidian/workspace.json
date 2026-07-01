@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/2026-05-14-18team-ai2-embedding-service.md",
+                "file": "blog/2026-07-01-church-app-backend-responsibility-shift.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-14-18team-ai2-embedding-service"
+              "title": "2026-07-01-church-app-backend-responsibility-shift"
             }
           }
         ]
@@ -185,23 +185,24 @@
   },
   "active": "498fbe4698a334c5",
   "lastOpenFiles": [
-    "projects/2026-05-28-bizkit-ai-architecture-draft.md",
-    "projects/2026-05-28-bizkit-ai-retrospective-draft.md",
+    "projects/2026-05-09-sang3dong-bulletin-app.md",
+    "projects/2026-05-29-sang3dong-bulletin-app-portfolio-example.md",
     "projects/2026-05-29-bizkit-final-ai-architecture.md",
     "projects/2026-05-29-bizkit-ai-model-benchmark.md",
+    "projects/2026-05-28-bizkit-ai-retrospective-draft.md",
+    "projects/2026-05-09-django-crawling-kakaotalk-bot.md",
+    "blog/2026-07-01-church-app-backend-responsibility-shift.md",
+    "projects/nas-docker-portfolio.md",
+    "projects/2026-05-14-18team-ai2-embedding-service.md",
+    "projects/2026-05-28-bizkit-ai-architecture-draft.md",
     "blog/2026-05-04-first-retrospective.md",
     "blog/2026-05-18-church-app-v2-template.md",
     "blog/2026-05-24-AWS_SUMMIT.md",
     "blog/2025-02-04-worker-vllm-qwen-tokenizer-troubleshooting.md",
     "notes/markdown-writing-workflow.md",
     "projects/2026-05-09-deal-moa.md",
-    "projects/2026-05-09-django-crawling-kakaotalk-bot.md",
     "projects/2026-05-09-music-boot.md",
-    "projects/2026-05-09-sang3dong-bulletin-app.md",
     "projects/2026-05-14-18team-ai.md",
-    "projects/2026-05-14-18team-ai2-embedding-service.md",
-    "projects/2026-05-29-sang3dong-bulletin-app-portfolio-example.md",
-    "projects/nas-docker-portfolio.md",
     "2026-05-29.md",
     "무제 1.canvas",
     "무제.canvas",

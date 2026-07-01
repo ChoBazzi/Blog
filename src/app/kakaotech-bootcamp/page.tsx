@@ -11,8 +11,8 @@ const KATEBU_TAGS = new Set(["카테부", "카카오테크", "카카오테크 �
 
 const boards = [
   { value: "all", label: "All" },
-  { value: "posts", label: "전체게시글" },
-  { value: "dev-log", label: "Dev log" },
+  { value: "posts", label: "전체 글" },
+  { value: "dev-log", label: "개발 기록" },
   { value: "notes", label: "공부 노트" },
   { value: "projects", label: "프로젝트" },
 ] as const;

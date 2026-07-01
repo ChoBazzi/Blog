@@ -4,11 +4,11 @@ import { categoryItems } from "@/lib/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
-  { href: "/about", label: "About" },
-  { href: "/posts", label: "전체게시글" },
   { href: "/projects", label: "프로젝트" },
-  { href: "/dev-log", label: "Dev log" },
-  { href: "/notes", label: "공부 노트" },
+  { href: "/dev-log", label: "개발 기록" },
+  { href: "/kakaotech-bootcamp", label: "카카오테크 부트캠프" },
+  { href: "/about", label: "About" },
+  { href: "https://github.com/ChoBazzi", label: "GitHub" },
 ];
 
 export function SiteHeader() {
@@ -47,7 +47,7 @@ export function SiteHeader() {
             <img src="/profile.jpg" alt="" />
             <div>
               <strong>조현식(Bazzi)</strong>
-              <span>백엔드 개발자 지망생</span>
+              <span>백엔드 주니어 개발자</span>
             </div>
             <a href="/about">About</a>
           </div>

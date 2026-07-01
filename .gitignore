@@ -44,10 +44,9 @@ content/**/_private/
 
 # Local agent instructions and AI-assisted design/research artifacts
 AGENTS.md
+.agents/
 .lazyweb/
 skills/*
-!skills/korean-tech-portfolio-writing/
-!skills/korean-tech-portfolio-writing/**
 
 # Local Notion exports used as source material
 노션/
