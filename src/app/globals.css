@@ -1370,9 +1370,9 @@ main {
 }
 
 .diagram-render {
-  min-height: 260px;
+  min-height: 320px;
   overflow-x: auto;
-  padding: 22px;
+  padding: 28px;
   background:
     linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px),
     linear-gradient(90deg, rgb(255 255 255 / 4%) 1px, transparent 1px);
@@ -1381,10 +1381,16 @@ main {
 
 .diagram-render svg {
   display: block;
-  min-width: 760px;
-  max-width: none;
-  height: auto;
+  width: 100% !important;
+  min-width: 0;
+  max-width: none !important;
+  height: auto !important;
   margin: 0 auto;
+}
+
+.diagram-card[data-mermaid-layout="scroll"] .diagram-render svg {
+  width: 960px !important;
+  min-width: 960px;
 }
 
 .diagram-render svg text {
@@ -1412,6 +1418,30 @@ main {
 
 .diagram-render svg .actor {
   filter: drop-shadow(0 8px 16px rgb(0 0 0 / 24%));
+}
+
+.diagram-render svg .cluster rect {
+  fill: #172033 !important;
+  stroke: #475569 !important;
+}
+
+.diagram-render svg .cluster-label text,
+.diagram-render svg .cluster-label span,
+.diagram-render svg .cluster-label p {
+  fill: #f8fafc !important;
+  color: #f8fafc !important;
+}
+
+.diagram-render svg .edgeLabel,
+.diagram-render svg .edgeLabel p,
+.diagram-render svg .labelBkg {
+  background-color: #111827 !important;
+  color: #e2e8f0 !important;
+}
+
+.diagram-render svg .edgeLabel rect {
+  fill: #111827 !important;
+  opacity: 1 !important;
 }
 
 .diagram-card.is-rendering .diagram-render::before {
@@ -2044,6 +2074,21 @@ main {
   .page-shell h1,
   .article-shell h1 {
     font-size: 2.15rem;
+  }
+
+  .diagram-render {
+    min-height: 280px;
+    padding: 18px;
+  }
+
+  .diagram-card[data-mermaid-layout="fit"] .diagram-render svg {
+    width: 560px !important;
+    min-width: 560px;
+  }
+
+  .diagram-card[data-mermaid-layout="scroll"] .diagram-render svg {
+    width: 840px !important;
+    min-width: 840px;
   }
 
   .architecture-map-header {

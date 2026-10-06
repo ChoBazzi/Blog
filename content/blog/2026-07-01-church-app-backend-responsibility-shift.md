@@ -2,12 +2,7 @@
 title: 성당 앱 백엔드 구조 개선기
 description: 클라이언트가 들고 있던 날짜 계산, 외부 데이터 처리, 게시 상태 책임을 Spring Boot 백엔드로 옮기며 고민한 책임 분리 기록입니다.
 date: 2026-07-01
-tags:
-  - Church App
-  - Spring Boot
-  - React Native
-  - Backend
-  - Architecture
+tags: ["Church App", "Spring Boot", "React Native", "Backend", "Architecture"]
 category: architecture
 published: true
 cover: /covers/2026-05-09-sang3dong-bulletin-app.jpg

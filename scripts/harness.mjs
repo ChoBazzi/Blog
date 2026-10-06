@@ -4,6 +4,7 @@ import { existsSync } from "node:fs";
 const commands = [["npm", ["run", "validate:content"]]];
 
 if (existsSync("node_modules")) {
+  commands.push(["npm", ["run", "test"]]);
   commands.push(["npm", ["run", "lint"]]);
   commands.push(["npm", ["run", "typecheck"]]);
   commands.push(["npm", ["run", "build"]]);

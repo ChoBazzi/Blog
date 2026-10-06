@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { getMermaidLayout } from "@/lib/mermaid-layout";
 
 export function MermaidRenderer() {
   useEffect(() => {
@@ -26,14 +27,14 @@ export function MermaidRenderer() {
           secondaryColor: "#1f2937",
           secondaryTextColor: "#f9fafb",
           secondaryBorderColor: "#a78bfa",
-          tertiaryColor: "#f8fafc",
-          tertiaryTextColor: "#1f2937",
-          tertiaryBorderColor: "#cbd5e1",
+          tertiaryColor: "#172033",
+          tertiaryTextColor: "#f8fafc",
+          tertiaryBorderColor: "#475569",
           lineColor: "#64748b",
-          textColor: "#1f2937",
-          clusterBkg: "#f8fafc",
-          clusterBorder: "#cbd5e1",
-          edgeLabelBackground: "#ffffff",
+          textColor: "#f8fafc",
+          clusterBkg: "#172033",
+          clusterBorder: "#475569",
+          edgeLabelBackground: "#111827",
           nodeBorder: "#38bdf8",
           actorBkg: "#0f172a",
           actorBorder: "#38bdf8",
@@ -72,6 +73,30 @@ export function MermaidRenderer() {
           .actor-line {
             stroke: #64748b !important;
           }
+
+          .cluster rect {
+            fill: #172033 !important;
+            stroke: #475569 !important;
+          }
+
+          .cluster-label text,
+          .cluster-label span,
+          .cluster-label p {
+            fill: #f8fafc !important;
+            color: #f8fafc !important;
+          }
+
+          .edgeLabel,
+          .edgeLabel p,
+          .labelBkg {
+            background-color: #111827 !important;
+            color: #e2e8f0 !important;
+          }
+
+          .edgeLabel rect {
+            fill: #111827 !important;
+            opacity: 1 !important;
+          }
         `,
       });
 
@@ -83,6 +108,7 @@ export function MermaidRenderer() {
 
         if (!source || !target) return;
 
+        diagram.dataset.mermaidLayout = getMermaidLayout(source);
         diagram.dataset.mermaidRendered = "true";
         diagram.classList.add("is-rendering");
 
