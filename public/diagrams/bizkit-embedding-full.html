@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>임베딩 생성과 벡터 저장·검색의 책임 — Bazzi Blog</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding:40px 24px;background:#fafaf7;color:#1f2328;font-family:'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif;line-height:1.65;color-scheme:light}
+.frame{width:100%;max-width:1120px;min-width:0;margin:0 auto}
+.eyebrow{font-family:'Geist Mono', ui-monospace, monospace;font-size:11px;letter-spacing:.14em;color:#475467}
+h1{font-family:'Instrument Serif', 'Noto Serif KR', serif;font-weight:400;font-size:32px;line-height:1.3;margin:12px 0 24px}
+.diagram-container{width:100%;overflow-x:auto}
+svg{width:100%;min-width:960px;display:block}
+.footer{font-size:12px;color:#475467;margin-top:20px}
+.summary{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:32px}
+.summary div{border-top:1px solid #e4e7ec;padding-top:12px}
+.summary h2{font-size:16px} .summary p{font-size:14px}
+@media(max-width:600px){body{padding:24px 16px}h1{font-size:28px}.summary{grid-template-columns:1fr}}
+@media print{.diagram-container{overflow-x:visible}svg{min-width:0}}
+</style></head><body><main class="frame"><p class="eyebrow">BAZZI BLOG · ARCHITECTURE</p><h1>임베딩 생성과 벡터 저장·검색의 책임</h1><div class="diagram-container"><svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bizkit-embedding-full-title bizkit-embedding-full-desc">
+<title id="bizkit-embedding-full-title">임베딩 생성과 벡터 저장·검색의 책임</title>
+<desc id="bizkit-embedding-full-desc">메인 AI 서버는 HTTP로 임베딩 서비스를 호출하고, 임베딩 서비스는 BGE-m3-ko의 벡터 생성과 Milvus의 저장·검색을 담당한다.</desc>
+<defs>
+<marker id="bizkit-embedding-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="bizkit-embedding-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="bizkit-embedding-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">BIZKIT / EMBEDDING SERVICE</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">임베딩 생성과 벡터 저장·검색의 책임</text>
+<path data-edge-from="ai" data-edge-to="service" d="M 192 248 L 272 248" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#bizkit-embedding-full-arrow-link)"/>
+<rect data-edge-label="ai-service" x="208" y="220" width="48" height="20" rx="2" fill="#fafaf7"/>
+<text x="232" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">HTTP</text>
+<path data-edge-from="service" data-edge-to="model" d="M 456 248 L 536 248" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-embedding-full-arrow)"/>
+<rect data-edge-label="service-model" x="468" y="220" width="56" height="20" rx="2" fill="#fafaf7"/>
+<text x="496" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">ENCODE</text>
+<path data-edge-from="model" data-edge-to="vector" d="M 704 248 L 784 248" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-embedding-full-arrow)"/>
+<path data-edge-from="service" data-edge-to="milvus" d="M 364 296 L 364 384" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-embedding-full-arrow)"/>
+<rect data-edge-label="service-milvus" x="372" y="330" width="104" height="20" rx="2" fill="#fafaf7"/>
+<text x="424" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">STORE / SEARCH</text>
+<g data-node-id="ai"><rect x="40" y="200" width="152" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="200" width="152" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="212" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="76" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">CALLER</text>
+<text x="116" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">AI 서버</text>
+<text x="116" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">HTTP client</text>
+</g>
+<g data-node-id="service"><rect x="272" y="200" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="272" y="200" width="184" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="284" y="212" width="40" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="304" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">API</text>
+<text x="364" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">임베딩 서비스</text>
+<text x="364" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">FastAPI</text>
+</g>
+<g data-node-id="model"><rect x="536" y="200" width="168" height="96" rx="6" fill="#fafaf7"/><rect x="536" y="200" width="168" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="548" y="212" width="44" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="570" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">MODEL</text>
+<text x="620" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">BGE-m3-ko</text>
+<text x="620" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">SentenceTransformer</text>
+</g>
+<g data-node-id="vector"><rect x="784" y="200" width="136" height="96" rx="6" fill="#fafaf7"/><rect x="784" y="200" width="136" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="796" y="212" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="820" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">OUTPUT</text>
+<text x="852" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">벡터</text>
+<text x="852" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">1024 dimensions</text>
+<text x="852" y="284" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">normalized</text>
+</g>
+<g data-node-id="milvus"><rect x="272" y="384" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="272" y="384" width="184" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="284" y="396" width="64" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="316" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">VECTOR DB</text>
+<text x="364" y="432" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Milvus</text>
+<text x="364" y="448" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">벡터 저장·검색</text>
+<text x="364" y="468" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">COSINE</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">벡터 생성과 저장·검색의 책임도 · 외부 벡터 입력에는 모델·전처리·정규화의 호환 조건이 필요하다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+</svg></div><section class="summary"><div><h2>서비스가 관리하는 경계</h2><p>메인 AI 서버는 HTTP로 호출하고 임베딩 서비스가 모델 로딩과 Milvus 연결, 벡터 생성·저장·검색을 담당한다.</p></div><div><h2>검색 결과와 사용 정책</h2><p>가까운 항목과 유사도를 반환하는 것과 요청 차단·캐시 재사용의 안전성을 판단하는 것은 다른 책임이다. 모델 교체 시 기존 벡터의 호환성을 다시 확인해야 한다.</p></div></section><p class="footer">독립 파일에서는 NanumSquare가 없을 때 시스템 글꼴로 대체된다.</p></main></body></html>

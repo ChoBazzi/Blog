@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="home-server-goals-full-title home-server-goals-full-desc" id="home-server-goals-full-root">
+<title id="home-server-goals-full-title">홈서버가 맡을 역할과 다음 목표</title>
+<desc id="home-server-goals-full-desc">Home Server의 목표 역할은 NAS, Docker, Database, Development Environment, Backup이며 Docker는 Web Server, API Server, Personal Projects를 맡고 Database에는 MariaDB와 PostgreSQL이 포함된다.</desc>
+<defs>
+      <style>#home-server-goals-full-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #home-server-goals-full-root .diagram-container { width:100%;overflow-x:auto }
+      #home-server-goals-full-root .diagram-container { overflow-x:visible }</style>
+<marker id="home-server-goals-full-home-server-goals-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="home-server-goals-full-home-server-goals-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="home-server-goals-full-home-server-goals-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">HOME SERVER / TARGET RESPONSIBILITIES</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">홈서버가 맡을 역할과 다음 목표</text>
+<path data-edge-from="root" data-edge-to="nas" d="M 416 256 L 416 256 Q 416 264 408 264 L 128 264 Q 120 264 120 272 L 120 288" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<path data-edge-from="root" data-edge-to="docker" d="M 448 256 L 448 272 Q 448 280 440 280 L 308 280 Q 300 280 300 288 L 300 288" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<path data-edge-from="root" data-edge-to="database" d="M 480 256 L 480 288" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<path data-edge-from="root" data-edge-to="development" d="M 512 256 L 512 272 Q 512 280 520 280 L 652 280 Q 660 280 660 288 L 660 288" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<path data-edge-from="root" data-edge-to="backup" d="M 544 256 L 544 256 Q 544 264 552 264 L 832 264 Q 840 264 840 272 L 840 288" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<path data-edge-from="docker" data-edge-to="web" d="M 260 384 L 260 384 Q 260 392 252 392 L 128 392 Q 120 392 120 400 L 120 400" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<path data-edge-from="docker" data-edge-to="api" d="M 300 384 L 300 400" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<path data-edge-from="docker" data-edge-to="projects" d="M 340 384 L 340 384 Q 340 392 348 392 L 472 392 Q 480 392 480 400 L 480 400" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-goals-full-home-server-goals-full-arrow)"/>
+<g data-node-id="root"><rect x="384" y="160" width="192" height="96" rx="6" fill="#fafaf7"/><rect x="384" y="160" width="192" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="396" y="172" width="40" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="416" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">GOAL</text>
+<text x="480" y="212" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Home Server</text>
+<text x="480" y="232" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">target responsibilities</text>
+</g>
+<g data-node-id="nas"><rect x="40" y="288" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="288" width="160" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="300" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="78" y="311" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">STORAGE</text>
+<text x="120" y="340" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">NAS</text>
+</g>
+<g data-node-id="docker"><rect x="220" y="288" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="220" y="288" width="160" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="232" y="300" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="258" y="311" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">RUNTIME</text>
+<text x="300" y="340" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Docker</text>
+</g>
+<g data-node-id="database"><rect x="400" y="288" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="400" y="288" width="160" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="412" y="300" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="440" y="311" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">DATABASE</text>
+<text x="480" y="340" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Database</text>
+<text x="480" y="360" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">MariaDB</text>
+<text x="480" y="372" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">PostgreSQL</text>
+</g>
+<g data-node-id="development"><rect x="580" y="288" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="580" y="288" width="160" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="592" y="300" width="40" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="612" y="311" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">DEV</text>
+<text x="660" y="336" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Development</text>
+<text x="660" y="352" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Environment</text>
+</g>
+<g data-node-id="backup"><rect x="760" y="288" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="760" y="288" width="160" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="772" y="300" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="796" y="311" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">BACKUP</text>
+<text x="840" y="340" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Backup</text>
+</g>
+<g data-node-id="web"><rect x="40" y="400" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="400" width="160" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="412" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="78" y="423" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">SERVICE</text>
+<text x="120" y="452" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Web Server</text>
+</g>
+<g data-node-id="api"><rect x="220" y="400" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="220" y="400" width="160" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="232" y="412" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="258" y="423" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">SERVICE</text>
+<text x="300" y="452" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">API Server</text>
+</g>
+<g data-node-id="projects"><rect x="400" y="400" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="400" y="400" width="160" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="412" y="412" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="440" y="423" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">PROJECTS</text>
+<text x="480" y="452" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Personal Projects</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">현재 운영 완료 목록이 아닌 역할 목표다. VM / LXC 배치와 DB 실행 환경은 다음 결정 과제로 남아 있다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+</svg>

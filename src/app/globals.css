@@ -1264,6 +1264,85 @@ main {
   object-fit: contain;
 }
 
+.designed-diagram {
+  min-width: 0;
+  max-width: 100%;
+  margin: 28px 0;
+}
+
+.designed-diagram-viewport {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.designed-diagram-viewport:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.prose .designed-diagram img {
+  width: 960px;
+  min-width: 960px;
+  max-width: none;
+  max-height: none;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.prose .designed-diagram .designed-diagram-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .designed-diagram .designed-diagram-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .designed-diagram .designed-diagram-dark {
+  display: block;
+}
+
+.designed-diagram figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 10px;
+  color: var(--muted-strong);
+  font-size: 0.8rem;
+}
+
+.designed-diagram figcaption small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .designed-diagram .designed-diagram-light {
+    display: none;
+  }
+
+  :root:not([data-theme]) .designed-diagram .designed-diagram-dark {
+    display: block;
+  }
+}
+
+@media print {
+  .designed-diagram-viewport {
+    overflow: visible;
+  }
+
+  .prose .designed-diagram img {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
 .prose a {
   color: var(--accent);
   font-weight: 700;

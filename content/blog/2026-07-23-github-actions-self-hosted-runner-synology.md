@@ -13,29 +13,7 @@ GitHub Actions 무료 2,000분을 모두 사용해서, Synology NAS의 Docker �
 
 ## 최종 구조
 
-```mermaid
-flowchart TB
-  subgraph dispatch["1 · Job delivery"]
-    direction LR
-    github["GitHub Actions<br/>Private repository"]
-    runner["Runner container<br/>Ubuntu 24.04 · private-ci"]
-
-    github -->|"HTTPS 443"| runner
-  end
-
-  subgraph runtime["2 · Synology Docker"]
-    direction LR
-    socket["Docker socket<br/>/var/run/docker.sock"]
-    engine["Docker Engine<br/>20.10.3 · API 1.41"]
-
-    socket -->|"API 1.41"| engine
-  end
-
-  postgres["3 · Temporary PostgreSQL 17.10<br/>CI database"]
-
-  dispatch -->|"Runner → Docker socket · Docker CLI"| runtime
-  runtime -->|"Docker Engine → PostgreSQL · docker run"| postgres
-```
+![NAS에서 GitHub로 연결하는 Runner](/diagrams/runner-synology.svg)
 
 Runner는 외부 요청을 받는 서버가 아니다. GitHub로 outbound HTTPS 443 연결을 만들고 작업을 받아온다. 그래서 NAS에 별도 포트 매핑이나 공유기 포트포워딩은 필요하지 않았다.
 

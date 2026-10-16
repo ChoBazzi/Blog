@@ -44,15 +44,7 @@ published: true
 
 높은 부하가 발생하면서 시스템이 몇 차례 다운됐고, 이후에는 DSM 자체에 접근하지 못하는 상황도 발생했다. Docker 역시 DSM 내부에서 실행하고 있었기 때문에 DSM에 문제가 생기면 NAS뿐 아니라 애플리케이션 서버에도 동시에 접근할 수 없었다.
 
-```text
-Hardware
-   ↓
-Xpenology / DSM
-   ↓
-Docker
-   ↓
-Web / API / DB
-```
+![DSM 하나에 집중됐던 서비스 기반](/diagrams/home-server-before.svg)
 
 NAS 운영체제가 사실상 모든 서비스의 기반이었다. DSM에 문제가 발생하면 그 위의 서비스도 모두 영향을 받는 구조였다.
 
@@ -132,21 +124,7 @@ Intel N100과 N150 계열 같은 저전력 CPU도 검토했지만, 여러 서비
 
 하드웨어보다 더 중요하게 생각한 것은 서버 구조였다. 기존에는 Xpenology가 모든 서비스의 중심이었다. 새 서버에서는 Proxmox를 기반으로 역할을 분리하는 방향으로 구성했다.
 
-```mermaid
-flowchart TB
-  proxmox["Proxmox"]
-  nas["Xpenology VM<br/>NAS"]
-  host["Docker Host<br/>LXC / VM"]
-  web["Web"]
-  api["API"]
-  db["Database"]
-
-  proxmox --> nas
-  proxmox --> host
-  host --> web
-  host --> api
-  host --> db
-```
+![Proxmox에서 NAS와 앱 실행 환경 분리](/diagrams/home-server-after.svg)
 
 핵심은 **NAS와 애플리케이션 서버를 분리하는 것**이다.
 
@@ -282,19 +260,7 @@ docker로 올린 서비스들 문제 때문에 NAS 서버까지 사용할 수 �
 
 새 서버의 목표는 단순한 NAS가 아니다. 다음 역할을 하나의 개인 인프라 안에서 분리해 운영하는 것이 목표다.
 
-```text
-Home Server
-├── NAS
-├── Docker
-│   ├── Web Server
-│   ├── API Server
-│   └── Personal Projects
-├── Database
-│   ├── MariaDB
-│   └── PostgreSQL
-├── Development Environment
-└── Backup
-```
+![홈서버가 맡을 역할과 다음 목표](/diagrams/home-server-goals.svg)
 
 동시에 필요한 성능과 안정성을 확보한 뒤 불필요한 전력 소비를 줄이려고 한다.
 

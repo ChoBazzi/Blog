@@ -20,11 +20,7 @@ BizKit의 직무 필터와 시맨틱 캐시에는 텍스트를 벡터로 바꾸�
 
 `SentenceTransformer`의 인코딩에서 `normalize_embeddings=True`를 사용한다. 이 서비스의 기본 임베딩 차원은 1024이다.
 
-```text
-AI 서버 -> 임베딩 서비스 -> BGE-m3-ko -> 벡터
-                  |
-                  +-> Milvus에 저장·검색
-```
+![임베딩 생성과 벡터 저장·검색의 책임](/diagrams/bizkit-embedding.svg)
 
 | API | 역할 |
 |---|---|

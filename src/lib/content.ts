@@ -236,6 +236,26 @@ function markdownToHtml(markdown: string) {
       continue;
     }
 
+    const diagram = line.match(/^!\[([^\]]+)\]\(\/diagrams\/([a-z0-9][a-z0-9-]*)\.svg\)$/);
+    if (diagram) {
+      flushParagraph();
+      flushList();
+      const label = escapeHtml(diagram[1]);
+      const source = `/diagrams/${diagram[2]}`;
+      html.push(
+        [
+          '<figure class="designed-diagram">',
+          `<div class="designed-diagram-viewport" role="region" aria-label="${label} — 가로 스크롤" tabindex="0">`,
+          `<img class="designed-diagram-light" src="${source}.svg" alt="${label}" width="960" height="600" loading="lazy" decoding="async" />`,
+          `<img class="designed-diagram-dark" src="${source}-dark.svg" alt="${label}" width="960" height="600" loading="lazy" decoding="async" />`,
+          "</div>",
+          `<figcaption><span>${label}<small>좌우로 스크롤하여 전체 보기</small></span><a href="${source}.html">원본 크게 보기</a></figcaption>`,
+          "</figure>",
+        ].join(""),
+      );
+      continue;
+    }
+
     if (line.startsWith("::architecture ")) {
       flushParagraph();
       flushList();
@@ -376,8 +396,13 @@ function extractHeadings(markdown: string): Heading[] {
 }
 
 function extractFirstImage(markdown: string) {
-  const match = markdown.match(/!\[[^\]]*]\(([^)]+)\)/);
-  return match?.[1];
+  for (const match of markdown.matchAll(/!\[[^\]]*]\(([^)]+)\)/g)) {
+    // Inline diagrams should not replace the article's existing hero image.
+    if (!/^\/diagrams\/[a-z0-9][a-z0-9-]*\.svg$/.test(match[1])) {
+      return match[1];
+    }
+  }
+  return undefined;
 }
 
 function slugify(value: string) {

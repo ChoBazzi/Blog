@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="home-server-before-full-title home-server-before-full-desc" id="home-server-before-full-root">
+<title id="home-server-before-full-title">DSM 하나에 집중됐던 서비스 기반</title>
+<desc id="home-server-before-full-desc">기존 Intel J5040 하드웨어 위에서 Xpenology와 DSM이 Docker를 실행하고 Web, API, 데이터베이스가 그 위에 의존하므로 DSM 장애가 전체 서비스 접근에 영향을 주었다.</desc>
+<defs>
+      <style>#home-server-before-full-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #home-server-before-full-root .diagram-container { width:100%;overflow-x:auto }
+      #home-server-before-full-root .diagram-container { overflow-x:visible }</style>
+<marker id="home-server-before-full-home-server-before-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="home-server-before-full-home-server-before-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="home-server-before-full-home-server-before-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">HOME SERVER / BEFORE</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">DSM 하나에 집중됐던 서비스 기반</text>
+<path data-edge-from="hardware" data-edge-to="dsm" d="M 216 320 L 272 320" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-before-full-home-server-before-full-arrow)"/>
+<path data-edge-from="dsm" data-edge-to="docker" d="M 448 320 L 504 320" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-before-full-home-server-before-full-arrow)"/>
+<path data-edge-from="docker" data-edge-to="services" d="M 680 320 L 736 320" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-before-full-home-server-before-full-arrow)"/>
+<g data-node-id="hardware"><rect x="40" y="272" width="176" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="272" width="176" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="284" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="80" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">HARDWARE</text>
+<text x="128" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Hardware</text>
+<text x="128" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Intel J5040</text>
+</g>
+<g data-node-id="dsm"><rect x="272" y="272" width="176" height="96" rx="6" fill="#fafaf7"/><rect x="272" y="272" width="176" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="284" y="284" width="40" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="304" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">OS</text>
+<text x="360" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Xpenology / DSM</text>
+<text x="360" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">NAS</text>
+</g>
+<g data-node-id="docker"><rect x="504" y="272" width="176" height="96" rx="6" fill="#fafaf7"/><rect x="504" y="272" width="176" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="516" y="284" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="542" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">RUNTIME</text>
+<text x="592" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Docker</text>
+<text x="592" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">DSM</text>
+</g>
+<g data-node-id="services"><rect x="736" y="272" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="736" y="272" width="184" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="748" y="284" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="776" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">SERVICES</text>
+<text x="828" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Web / API / DB</text>
+<text x="828" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">MariaDB / PostgreSQL</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">화살표는 실행 기반의 순서다. DSM에 접근할 수 없으면 NAS와 Docker 서비스도 함께 영향을 받았다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+</svg>

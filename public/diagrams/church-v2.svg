@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="church-v2-title church-v2-desc" id="church-v2-root">
+<title id="church-v2-title">성당 앱 v2: 콘텐츠와 파일의 책임 분리</title>
+<desc id="church-v2-desc">v2 설계 방향에서 React Native App은 Spring Boot API를 조회하고, Spring은 PostgreSQL의 콘텐츠·파일 메타데이터와 별도 File Storage의 PDF·이미지 파일을 관리한다.</desc>
+<defs>
+      <style>#church-v2-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #church-v2-root .diagram-container { width:100%;overflow-x:auto }
+      #church-v2-root .diagram-container { overflow-x:visible }</style>
+<marker id="church-v2-church-v2-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="church-v2-church-v2-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="church-v2-church-v2-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">CHURCH APP / V2 DESIGN DIRECTION</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">성당 앱 v2: 콘텐츠와 파일의 책임 분리</text>
+<path data-edge-from="mobile" data-edge-to="spring" d="M 248 328 L 360 328" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#church-v2-church-v2-arrow-link)"/>
+<rect data-edge-label="mobile-spring" x="264" y="300" width="80" height="20" rx="2" fill="#fafaf7"/>
+<text x="304" y="314" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">READ API</text>
+<path data-edge-from="spring" data-edge-to="postgres" d="M 584 312 L 804 312 Q 812 312 812 304 L 812 276" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#church-v2-church-v2-arrow)"/>
+<rect data-edge-label="spring-postgres" x="600" y="284" width="160" height="20" rx="2" fill="#fafaf7"/>
+<text x="680" y="298" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="500" fill="#667085">콘텐츠·메타데이터</text>
+<path data-edge-from="spring" data-edge-to="files" d="M 584 344 L 804 344 Q 812 344 812 352 L 812 384" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#church-v2-church-v2-arrow)"/>
+<rect data-edge-label="spring-files" x="600" y="352" width="136" height="20" rx="2" fill="#fafaf7"/>
+<text x="668" y="366" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="500" fill="#667085">PDF·이미지 원본</text>
+<g data-node-id="mobile"><rect x="56" y="280" width="192" height="96" rx="6" fill="#fafaf7"/><rect x="56" y="280" width="192" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="68" y="292" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="92" y="303" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">CLIENT</text>
+<text x="152" y="328" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">React Native App</text>
+<text x="152" y="344" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">화면·사용자 경험</text>
+</g>
+<g data-node-id="spring"><rect x="360" y="280" width="224" height="96" rx="6" fill="#fafaf7"/><rect x="360" y="280" width="224" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="372" y="292" width="40" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="392" y="303" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">API</text>
+<text x="472" y="328" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Spring Boot API</text>
+<text x="472" y="344" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">정규화·게시 상태·조회</text>
+</g>
+<g data-node-id="postgres"><rect x="704" y="180" width="216" height="96" rx="6" fill="#fafaf7"/><rect x="704" y="180" width="216" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="716" y="192" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="744" y="203" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">DATABASE</text>
+<text x="812" y="228" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">PostgreSQL</text>
+<text x="812" y="244" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">콘텐츠·파일 메타데이터</text>
+</g>
+<g data-node-id="files"><rect x="704" y="384" width="216" height="96" rx="6" fill="#fafaf7"/><rect x="704" y="384" width="216" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="716" y="396" width="44" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="738" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">FILES</text>
+<text x="812" y="432" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">File Storage</text>
+<text x="812" y="448" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">PDF·이미지 파일</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">설계 방향 · 선은 데이터 관리 책임이며 실제 파일 제공 경로나 배포 완료를 확정하지 않는다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+</svg>

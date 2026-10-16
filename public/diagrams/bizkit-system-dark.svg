@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bizkit-system-dark-title bizkit-system-dark-desc" id="bizkit-system-dark-root">
+<title id="bizkit-system-dark-title">BizKit AI 서버의 책임 경계</title>
+<desc id="bizkit-system-dark-desc">클라이언트와 Spring 도메인 서버의 요청을 FastAPI가 접수하고 Redis Streams의 작업을 Worker가 실행하며, 외부 데이터·RunPod·임베딩 서비스를 활용한 결과를 파싱해 Redis Hash에 기록하고 FastAPI가 조회 응답을 제공한다.</desc>
+<defs>
+      <style>#bizkit-system-dark-root { color: #f3f6fb; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #bizkit-system-dark-root .diagram-container { width:100%;overflow-x:auto }
+      #bizkit-system-dark-root .diagram-container { overflow-x:visible }</style>
+<marker id="bizkit-system-dark-bizkit-system-dark-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#b5bfce"/></marker>
+<marker id="bizkit-system-dark-bizkit-system-dark-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7aa2ff"/></marker>
+<marker id="bizkit-system-dark-bizkit-system-dark-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7aa2ff"/></marker>
+</defs>
+<rect width="960" height="600" fill="#0f1117"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">BIZKIT / SYSTEM RESPONSIBILITIES</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#f3f6fb">BizKit AI 서버의 책임 경계</text>
+<path data-edge-from="caller" data-edge-to="api" d="M 192 208 L 256 208" fill="none" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow-link)"/>
+<path data-edge-from="api" data-edge-to="stream" d="M 436 208 L 496 208" fill="none" stroke="#b5bfce" stroke-width="1" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow)"/>
+<path data-edge-from="stream" data-edge-to="worker" d="M 656 208 L 720 208" fill="none" stroke="#b5bfce" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow)"/>
+<path data-edge-from="worker" data-edge-to="external" d="M 756 256 L 756 280 Q 756 288 748 288 L 120 288 Q 112 288 112 296 L 112 384" fill="none" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow-link)"/>
+<path data-edge-from="worker" data-edge-to="runpod" d="M 792 256 L 792 304 Q 792 312 784 312 L 312 312 Q 304 312 304 320 L 304 384" fill="none" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow-link)"/>
+<path data-edge-from="worker" data-edge-to="embedding" d="M 828 256 L 828 328 Q 828 336 820 336 L 504 336 Q 496 336 496 344 L 496 384" fill="none" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow-link)"/>
+<path data-edge-from="embedding" data-edge-to="milvus" d="M 568 432 L 616 432" fill="none" stroke="#b5bfce" stroke-width="1" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow)"/>
+<path data-edge-from="worker" data-edge-to="state" d="M 864 256 L 864 352 Q 864 360 856 360 L 848 360 Q 840 360 840 368 L 840 384" fill="none" stroke="#b5bfce" stroke-width="1" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow)"/>
+<path data-edge-from="state" data-edge-to="api" d="M 904 432 L 912 432 Q 920 432 920 424 L 920 136 Q 920 128 912 128 L 384 128 Q 376 128 376 136 L 376 160" fill="none" stroke="#b5bfce" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow)"/>
+<rect data-edge-label="state-api" x="560" y="100" width="88" height="20" rx="2" fill="#0f1117"/>
+<text x="604" y="114" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">READ RESULT</text>
+<path data-edge-from="api" data-edge-to="caller" d="M 316 160 L 316 136 Q 316 128 308 128 L 124 128 Q 116 128 116 136 L 116 160" fill="none" stroke="#7aa2ff" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#bizkit-system-dark-bizkit-system-dark-arrow-link)"/>
+<rect data-edge-label="api-caller" x="172" y="100" width="88" height="20" rx="2" fill="#0f1117"/>
+<text x="216" y="114" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">ID / RESULT</text>
+<g data-node-id="caller"><rect x="40" y="160" width="152" height="96" rx="6" fill="#0f1117"/><rect x="40" y="160" width="152" height="96" rx="6" fill="#151922" stroke="#b5bfce" stroke-width="1"/>
+<rect x="52" y="172" width="48" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="76" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">CALLER</text>
+<text x="116" y="208" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">클라이언트 /</text>
+<text x="116" y="224" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">Spring 도메인 서버</text>
+<text x="116" y="244" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">domain data / policy</text>
+</g>
+<g data-node-id="api"><rect x="256" y="160" width="180" height="96" rx="6" fill="#0f1117"/><rect x="256" y="160" width="180" height="96" rx="6" fill="#17233d" stroke="#7aa2ff" stroke-width="1.2"/>
+<rect x="268" y="172" width="40" height="16" rx="2" fill="#0f1117" stroke="#7aa2ff" stroke-width="0.8"/>
+<text x="288" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#7aa2ff">API</text>
+<text x="346" y="208" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">FastAPI</text>
+<text x="346" y="224" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">검증·작업 접수·조회</text>
+<text x="346" y="244" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">submit / poll</text>
+</g>
+<g data-node-id="stream"><rect x="496" y="160" width="160" height="96" rx="6" fill="#0f1117"/><rect x="496" y="160" width="160" height="96" rx="6" fill="#151922" stroke="#b5bfce" stroke-width="1"/>
+<rect x="508" y="172" width="44" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="530" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">QUEUE</text>
+<text x="576" y="212" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">Redis Streams</text>
+<text x="576" y="232" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">task queue</text>
+</g>
+<g data-node-id="worker"><rect x="720" y="160" width="180" height="96" rx="6" fill="#0f1117"/><rect x="720" y="160" width="180" height="96" rx="6" fill="#17233d" stroke="#7aa2ff" stroke-width="1.2"/>
+<rect x="732" y="172" width="48" height="16" rx="2" fill="#0f1117" stroke="#7aa2ff" stroke-width="0.8"/>
+<text x="756" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#7aa2ff">WORKER</text>
+<text x="810" y="208" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">Worker</text>
+<text x="810" y="224" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">결과 파싱·후처리</text>
+<text x="810" y="244" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">consume / execute</text>
+</g>
+<g data-node-id="external"><rect x="40" y="384" width="144" height="96" rx="6" fill="#0f1117"/><rect x="40" y="384" width="144" height="96" rx="6" fill="#0f1117" stroke="#b5bfce" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="52" y="396" width="56" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="80" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">EXTERNAL</text>
+<text x="112" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">외부 데이터 수집</text>
+<text x="112" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">GitHub / Search API</text>
+</g>
+<g data-node-id="runpod"><rect x="232" y="384" width="144" height="96" rx="6" fill="#0f1117"/><rect x="232" y="384" width="144" height="96" rx="6" fill="#0f1117" stroke="#b5bfce" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="244" y="396" width="44" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="266" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">MODEL</text>
+<text x="304" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">RunPod 모델</text>
+<text x="304" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">GPU inference</text>
+</g>
+<g data-node-id="embedding"><rect x="424" y="384" width="144" height="96" rx="6" fill="#0f1117"/><rect x="424" y="384" width="144" height="96" rx="6" fill="#0f1117" stroke="#b5bfce" stroke-width="1"/>
+<rect x="436" y="396" width="40" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="456" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">API</text>
+<text x="496" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">임베딩 서비스</text>
+<text x="496" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">vector generation</text>
+</g>
+<g data-node-id="milvus"><rect x="616" y="384" width="128" height="96" rx="6" fill="#0f1117"/><rect x="616" y="384" width="128" height="96" rx="6" fill="#151922" stroke="#b5bfce" stroke-width="1"/>
+<rect x="628" y="396" width="64" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="660" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">VECTOR DB</text>
+<text x="680" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">Milvus</text>
+<text x="680" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">store / search</text>
+</g>
+<g data-node-id="state"><rect x="776" y="384" width="128" height="96" rx="6" fill="#0f1117"/><rect x="776" y="384" width="128" height="96" rx="6" fill="#151922" stroke="#b5bfce" stroke-width="1"/>
+<rect x="788" y="396" width="44" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="810" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">STATE</text>
+<text x="840" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">상태·결과 저장</text>
+<text x="840" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">Redis Hash</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">Worker가 호출 결과를 파싱·후처리해 작업 레코드에 기록한다. 전체 인증·배포 경로나 복구 보장은 나타내지 않는다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#2a3343"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#17233d" stroke="#7aa2ff"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#b5bfce"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">관계·흐름</text>
+<line x1="560" y1="566" x2="600" y2="566" stroke="#b5bfce" stroke-dasharray="5,4"/>
+<text x="612" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">작업 소비·조회 응답</text>
+</svg>

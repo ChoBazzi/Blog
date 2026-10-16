@@ -53,14 +53,7 @@ torch: 2.6.0
 
 최종 구조는 RunPod handler가 요청을 받고, 입력 형태에 따라 일반 vLLM 엔진 또는 OpenAI 호환 엔진으로 분기하는 방식이다.
 
-```text
-RunPod handler
-  -> JobInput 파싱
-  -> OpenAI route 여부 확인
-  -> vLLMEngine 또는 OpenAIvLLMEngine 선택
-  -> AsyncLLM generate
-  -> streaming/non-streaming 응답 반환
-```
+![요청 형식에 따라 나누는 vLLM 엔진](/diagrams/vllm-routing.svg)
 
 일반 요청은 `vLLMEngine`에서 처리하고, OpenAI 호환 요청은 `OpenAIvLLMEngine`이 `OpenAIServingChat`과 `OpenAIServingCompletion`을 통해 처리한다. 이렇게 분리하니 일반 vLLM 호출과 OpenAI compatible API 호출의 책임이 명확해졌다.
 

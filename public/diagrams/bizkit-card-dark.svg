@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bizkit-card-dark-title bizkit-card-dark-desc" id="bizkit-card-dark-root">
+<title id="bizkit-card-dark-title">명함 배경 생성과 텍스트 렌더링의 분리</title>
+<desc id="bizkit-card-dark-desc">스타일 요청을 프롬프트와 레이아웃으로 구성하고 SDXL로 배경을 생성한 뒤, 별도 렌더링 단계에서 이름과 연락처를 배치한다.</desc>
+<defs>
+      <style>#bizkit-card-dark-root { color: #f3f6fb; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #bizkit-card-dark-root .diagram-container { width:100%;overflow-x:auto }
+      #bizkit-card-dark-root .diagram-container { overflow-x:visible }</style>
+<marker id="bizkit-card-dark-bizkit-card-dark-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#b5bfce"/></marker>
+<marker id="bizkit-card-dark-bizkit-card-dark-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7aa2ff"/></marker>
+<marker id="bizkit-card-dark-bizkit-card-dark-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7aa2ff"/></marker>
+</defs>
+<rect width="960" height="600" fill="#0f1117"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">BIZKIT / CARD GENERATION</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#f3f6fb">명함 배경 생성과 텍스트 렌더링의 분리</text>
+<path data-edge-from="style" data-edge-to="compose" d="M 192 312 L 272 312" fill="none" stroke="#b5bfce" stroke-width="1" marker-end="url(#bizkit-card-dark-bizkit-card-dark-arrow)"/>
+<path data-edge-from="compose" data-edge-to="background" d="M 456 312 L 536 312" fill="none" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#bizkit-card-dark-bizkit-card-dark-arrow-accent)"/>
+<path data-edge-from="background" data-edge-to="text" d="M 704 312 L 784 312" fill="none" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#bizkit-card-dark-bizkit-card-dark-arrow-accent)"/>
+<g data-node-id="style"><rect x="40" y="264" width="152" height="96" rx="6" fill="#0f1117"/><rect x="40" y="264" width="152" height="96" rx="6" fill="#151922" stroke="#b5bfce" stroke-width="1"/>
+<rect x="52" y="276" width="44" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="74" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">INPUT</text>
+<text x="116" y="316" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">스타일 요청·입력</text>
+<text x="116" y="336" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">style input</text>
+</g>
+<g data-node-id="compose"><rect x="272" y="264" width="184" height="96" rx="6" fill="#0f1117"/><rect x="272" y="264" width="184" height="96" rx="6" fill="#0f1117" stroke="#b5bfce" stroke-width="1"/>
+<rect x="284" y="276" width="52" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="310" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">COMPOSE</text>
+<text x="364" y="312" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">프롬프트·레이아웃</text>
+<text x="364" y="328" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">구성</text>
+<text x="364" y="348" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">prompt / layout</text>
+</g>
+<g data-node-id="background"><rect x="536" y="264" width="168" height="96" rx="6" fill="#0f1117"/><rect x="536" y="264" width="168" height="96" rx="6" fill="#17233d" stroke="#7aa2ff" stroke-width="1.2"/>
+<rect x="548" y="276" width="44" height="16" rx="2" fill="#0f1117" stroke="#7aa2ff" stroke-width="0.8"/>
+<text x="570" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#7aa2ff">MODEL</text>
+<text x="620" y="316" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">SDXL 배경 생성</text>
+<text x="620" y="336" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">background image</text>
+</g>
+<g data-node-id="text"><rect x="784" y="264" width="136" height="96" rx="6" fill="#0f1117"/><rect x="784" y="264" width="136" height="96" rx="6" fill="#0f1117" stroke="#b5bfce" stroke-width="1"/>
+<rect x="796" y="276" width="48" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="820" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">RENDER</text>
+<text x="852" y="316" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">텍스트 렌더링</text>
+<text x="852" y="336" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">name / contact</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">텍스트 렌더링은 파이프라인 내부 단계다. 독립 서비스 배포나 최종 이미지의 가독성 보장을 뜻하지 않는다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#2a3343"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#17233d" stroke="#7aa2ff"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#b5bfce"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">관계·흐름</text>
+</svg>

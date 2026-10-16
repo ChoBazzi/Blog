@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="blog-publishing-full-title blog-publishing-full-desc" id="blog-publishing-full-root">
+<title id="blog-publishing-full-title">공개 배포와 NAS 운영 실험을 별도 경로로</title>
+<desc id="blog-publishing-full-desc">Obsidian Markdown을 content/에 두고 Next.js로 만드는 같은 블로그 앱에서 Vercel 공개 배포와 Docker 및 NAS 배포 실험을 별도 출력 경로로 나눈다.</desc>
+<defs>
+      <style>#blog-publishing-full-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #blog-publishing-full-root .diagram-container { width:100%;overflow-x:auto }
+      #blog-publishing-full-root .diagram-container { overflow-x:visible }</style>
+<marker id="blog-publishing-full-blog-publishing-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="blog-publishing-full-blog-publishing-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="blog-publishing-full-blog-publishing-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">PORTFOLIO BLOG / PUBLISHING PATHS</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">공개 배포와 NAS 운영 실험을 별도 경로로</text>
+<path data-edge-from="markdown" data-edge-to="content" d="M 216 320 L 280 320" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#blog-publishing-full-blog-publishing-full-arrow)"/>
+<path data-edge-from="content" data-edge-to="build" d="M 432 320 L 496 320" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#blog-publishing-full-blog-publishing-full-arrow)"/>
+<path data-edge-from="build" data-edge-to="vercel" d="M 680 304 L 704 304 Q 712 304 712 296 L 712 232 Q 712 224 720 224 L 744 224" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#blog-publishing-full-blog-publishing-full-arrow-link)"/>
+<path data-edge-from="build" data-edge-to="nas" d="M 680 336 L 704 336 Q 712 336 712 344 L 712 408 Q 712 416 720 416 L 744 416" fill="none" stroke="#475467" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#blog-publishing-full-blog-publishing-full-arrow)"/>
+<g data-node-id="markdown"><rect x="40" y="272" width="176" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="272" width="176" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="284" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="76" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">AUTHOR</text>
+<text x="128" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Obsidian Markdown</text>
+<text x="128" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">.md</text>
+</g>
+<g data-node-id="content"><rect x="280" y="272" width="152" height="96" rx="6" fill="#fafaf7"/><rect x="280" y="272" width="152" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="292" y="284" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="316" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">SOURCE</text>
+<text x="356" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">content/</text>
+<text x="356" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Markdown files</text>
+</g>
+<g data-node-id="build"><rect x="496" y="272" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="496" y="272" width="184" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="508" y="284" width="44" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="530" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">BUILD</text>
+<text x="588" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Next.js 앱·빌드</text>
+<text x="588" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">static build</text>
+<text x="588" y="356" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">standalone server</text>
+</g>
+<g data-node-id="vercel"><rect x="744" y="176" width="176" height="96" rx="6" fill="#fafaf7"/><rect x="744" y="176" width="176" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="756" y="188" width="48" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="780" y="199" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">PUBLIC</text>
+<text x="832" y="224" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Vercel</text>
+<text x="832" y="240" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">현재 공개 배포</text>
+<text x="832" y="260" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">public deploy</text>
+</g>
+<g data-node-id="nas"><rect x="744" y="368" width="176" height="96" rx="6" fill="#fafaf7"/><rect x="744" y="368" width="176" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="756" y="380" width="68" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="790" y="391" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">EXPERIMENT</text>
+<text x="832" y="416" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Docker / NAS</text>
+<text x="832" y="432" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">운영 실험</text>
+<text x="832" y="452" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">deploy experiment</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">Vercel이 NAS에 배포하는 구조가 아니다. 현재 공개 서비스와 같은 앱의 Docker / NAS 실험을 분리한다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+<line x1="560" y1="566" x2="600" y2="566" stroke="#475467" stroke-dasharray="5,4"/>
+<text x="612" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">운영 실험 경로</text>
+</svg>

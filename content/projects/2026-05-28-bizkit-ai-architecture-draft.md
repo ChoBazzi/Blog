@@ -20,13 +20,7 @@ BizKit AI 서버는 GitHub 활동 분석, 직무 기반 자기소개, 명함 OCR
 
 비동기 경로에서 FastAPI는 요청을 검증하고 작업 ID를 만든 뒤 Redis Streams에 등록한다. Worker는 작업을 읽어 외부 데이터 수집, 모델 호출, 결과 파싱을 수행한다.
 
-```text
-클라이언트 -> FastAPI -> 작업 등록 -> Redis Streams
-                |                       |
-                +-> task_id             +-> Worker -> 상태·결과 저장
-                                                            |
-클라이언트 -------------------- 상태·결과 조회 ----------------+
-```
+![요청 접수와 모델 실행의 분리](/diagrams/bizkit-async.svg)
 
 실제 저장소의 [README](https://github.com/100-hours-a-week/18-team-18TEAM-ai)는 HEX와 직무 분석의 제출 API를 기능별로 구분한다. 단일 `POST /ai/tasks`로 모든 기능을 접수하는 인터페이스는 아니다.
 
@@ -51,11 +45,7 @@ BizKit AI 서버는 GitHub 활동 분석, 직무 기반 자기소개, 명함 OCR
 
 다음은 정상 처리와 실패를 설명하는 개념도이며, 가능한 모든 예외 전이를 열거한 상태 명세는 아니다.
 
-```text
-pending -> running -> completed
-              |
-              +----> failed
-```
+![작업 상태: 정상 완료와 실패의 분기](/diagrams/bizkit-task-states.svg)
 
 입력 오류는 접수 단계에서 처리하고, 작업 실행 중 실패는 상태와 오류 정보로 남기는 방향을 잡았다. 실패한 작업을 클라이언트가 계속 처리 중인 것으로 오해하지 않게 하는 것이 목적이다.
 
@@ -71,9 +61,7 @@ GitHub 활동을 규칙으로 환산하는 부분과 생성형 모델의 역할�
 
 직무 필터와 시맨틱 캐시에 필요한 임베딩 생성·검색은 별도 HTTP 서비스로 분리했다. 메인 AI 서버가 모델 로딩과 Milvus 컬렉션 관리를 직접 담당하지 않도록 하기 위해서이다.
 
-```text
-AI 서버 -> 임베딩 서비스 -> BGE-m3-ko -> Milvus
-```
+![임베딩 생성과 벡터 저장·검색의 책임](/diagrams/bizkit-embedding.svg)
 
 API를 분리하면 구현 책임을 줄일 수 있지만, 모델을 바꿀 때 API 형태만 유지하면 되는 것은 아니다. 기존 문서 벡터와 새 질의 벡터의 공간이 달라질 수 있으므로 재임베딩과 검색 품질 확인이 필요하다. 세부 조건은 [임베딩 서비스](/projects/2026-05-14-18team-ai2-embedding-service)에 정리했다.
 
