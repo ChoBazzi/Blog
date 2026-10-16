@@ -118,12 +118,7 @@ v1에서는 모바일 앱이 최신 주보를 보여주는 데 집중했기 때�
 
 그래서 v2에서는 Spring Boot 백엔드를 성당 콘텐츠의 기준 저장소로 두는 방향을 잡았습니다. 모바일 앱은 화면과 사용자 경험에 집중하고, Spring 서버는 콘텐츠 정규화, 공개 상태, 파일 메타데이터, 조회 API를 담당합니다.
 
-```text
-React Native App
-  -> Spring Boot API
-  -> PostgreSQL
-  -> File Storage
-```
+![성당 앱 v2: 콘텐츠와 파일의 책임 분리](/diagrams/church-v2.svg)
 
 Spring 백엔드가 맡을 책임은 다음과 같습니다.
 
@@ -171,19 +166,9 @@ PostgreSQL은 구조가 안정적인 성당 콘텐츠를 다루기에 적합합�
 
 Spring 서버는 기능별로 controller, service, repository, entity, dto를 섞어두기보다 도메인 단위로 나누는 편이 유지보수에 유리합니다.
 
-```text
-src/main/java/.../church/
-  bulletin/
-    api/
-    application/
-    domain/
-    infrastructure/
-  announcement/
-  liturgy/
-  mass/
-  file/
-  appversion/
-```
+![Spring 패키지 초안: 여섯 도메인](/diagrams/church-packages.svg)
+
+![bulletin 내부의 네 가지 책임](/diagrams/church-bulletin-layers.svg)
 
 - `api`: Controller와 request/response DTO
 - `application`: 화면 단위 use case와 transaction 처리

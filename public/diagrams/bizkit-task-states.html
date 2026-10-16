@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>작업 상태: 정상 완료와 실패의 분기 — Bazzi Blog</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding:40px 24px;background:#fafaf7;color:#1f2328;font-family:'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif;line-height:1.65;color-scheme:light}
+.frame{width:100%;max-width:1120px;min-width:0;margin:0 auto}
+.eyebrow{font-family:'Geist Mono', ui-monospace, monospace;font-size:11px;letter-spacing:.14em;color:#475467}
+h1{font-family:'Instrument Serif', 'Noto Serif KR', serif;font-weight:400;font-size:32px;line-height:1.3;margin:12px 0 24px}
+.diagram-container{width:100%;overflow-x:auto}
+svg{width:100%;min-width:960px;display:block}
+.footer{font-size:12px;color:#475467;margin-top:20px}
+.summary{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:32px}
+.summary div{border-top:1px solid #e4e7ec;padding-top:12px}
+.summary h2{font-size:16px} .summary p{font-size:14px}
+@media(max-width:600px){body{padding:24px 16px}h1{font-size:28px}.summary{grid-template-columns:1fr}}
+@media print{.diagram-container{overflow-x:visible}svg{min-width:0}}
+</style></head><body><main class="frame"><p class="eyebrow">BAZZI BLOG · STATE MACHINE</p><h1>작업 상태: 정상 완료와 실패의 분기</h1><div class="diagram-container"><svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bizkit-task-states-title bizkit-task-states-desc">
+<title id="bizkit-task-states-title">작업 상태: 정상 완료와 실패의 분기</title>
+<desc id="bizkit-task-states-desc">작업은 pending에서 running으로 진행하고, 실행 결과에 따라 completed 또는 failed로 나뉘며 세부 진행 단계는 별도 progress 필드로 관리한다.</desc>
+<defs>
+<marker id="bizkit-task-states-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="bizkit-task-states-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="bizkit-task-states-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">BIZKIT / TASK STATUS</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">작업 상태: 정상 완료와 실패의 분기</text>
+<path data-edge-from="pending" data-edge-to="running" d="M 248 248 L 360 248" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-task-states-arrow)"/>
+<rect data-edge-label="pending-running" x="272" y="220" width="64" height="20" rx="2" fill="#fafaf7"/>
+<text x="304" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">START</text>
+<path data-edge-from="running" data-edge-to="completed" d="M 528 248 L 704 248" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#bizkit-task-states-arrow-accent)"/>
+<rect data-edge-label="running-completed" x="576" y="220" width="80" height="20" rx="2" fill="#fafaf7"/>
+<text x="616" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">COMPLETE</text>
+<path data-edge-from="running" data-edge-to="failed" d="M 444 296 L 444 424 Q 444 432 452 432 L 704 432" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-task-states-arrow)"/>
+<rect data-edge-label="running-failed" x="560" y="404" width="64" height="20" rx="2" fill="#fafaf7"/>
+<text x="592" y="418" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">FAIL</text>
+<g data-node-id="pending"><rect x="80" y="200" width="168" height="96" rx="8" fill="#fafaf7"/><rect x="80" y="200" width="168" height="96" rx="8" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="92" y="212" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="118" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">WAITING</text>
+<text x="164" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">pending</text>
+<text x="164" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">TaskStatus</text>
+</g>
+<g data-node-id="running"><rect x="360" y="200" width="168" height="96" rx="8" fill="#fafaf7"/><rect x="360" y="200" width="168" height="96" rx="8" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="372" y="212" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="396" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">ACTIVE</text>
+<text x="444" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">running</text>
+<text x="444" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">TaskStatus</text>
+</g>
+<g data-node-id="completed"><rect x="704" y="200" width="176" height="96" rx="8" fill="#fafaf7"/><rect x="704" y="200" width="176" height="96" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="716" y="212" width="56" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="744" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">TERMINAL</text>
+<text x="792" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">completed</text>
+<text x="792" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">TaskStatus</text>
+</g>
+<g data-node-id="failed"><rect x="704" y="384" width="176" height="96" rx="8" fill="#fafaf7"/><rect x="704" y="384" width="176" height="96" rx="8" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="716" y="396" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="744" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">TERMINAL</text>
+<text x="792" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">failed</text>
+<text x="792" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">TaskStatus</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">정상 처리·실패의 개념도이며 완전한 복구 명세가 아니다. 세부 진행 단계는 별도 progress 필드로 관리한다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+</svg></div><p class="footer">독립 파일에서는 NanumSquare가 없을 때 시스템 글꼴로 대체된다.</p></main></body></html>

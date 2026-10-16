@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="church-bulletin-layers-full-title church-bulletin-layers-full-desc" id="church-bulletin-layers-full-root">
+<title id="church-bulletin-layers-full-title">bulletin 내부의 네 가지 책임</title>
+<desc id="church-bulletin-layers-full-desc">bulletin 패키지 아래 api, application, domain, infrastructure를 두어 요청·응답, 유스케이스, 도메인 규칙, 저장소·외부 연동의 책임을 나누는 초안이다.</desc>
+<defs>
+      <style>#church-bulletin-layers-full-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #church-bulletin-layers-full-root .diagram-container { width:100%;overflow-x:auto }
+      #church-bulletin-layers-full-root .diagram-container { overflow-x:visible }</style>
+<marker id="church-bulletin-layers-full-church-bulletin-layers-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="church-bulletin-layers-full-church-bulletin-layers-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="church-bulletin-layers-full-church-bulletin-layers-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">CHURCH APP / BULLETIN PACKAGE DETAIL</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">bulletin 내부의 네 가지 책임</text>
+<path data-edge-from="bulletin" data-edge-to="api" d="M 408 256 L 408 280 Q 408 288 400 288 L 140 288 Q 132 288 132 296 L 132 352" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#church-bulletin-layers-full-church-bulletin-layers-full-arrow)"/>
+<path data-edge-from="bulletin" data-edge-to="application" d="M 456 256 L 456 304 Q 456 312 448 312 L 372 312 Q 364 312 364 320 L 364 352" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#church-bulletin-layers-full-church-bulletin-layers-full-arrow)"/>
+<path data-edge-from="bulletin" data-edge-to="domain" d="M 504 256 L 504 304 Q 504 312 512 312 L 588 312 Q 596 312 596 320 L 596 352" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#church-bulletin-layers-full-church-bulletin-layers-full-arrow)"/>
+<path data-edge-from="bulletin" data-edge-to="infrastructure" d="M 552 256 L 552 280 Q 552 288 560 288 L 820 288 Q 828 288 828 296 L 828 352" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#church-bulletin-layers-full-church-bulletin-layers-full-arrow)"/>
+<g data-node-id="bulletin"><rect x="360" y="160" width="240" height="96" rx="6" fill="#fafaf7"/><rect x="360" y="160" width="240" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="372" y="172" width="52" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="398" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">PACKAGE</text>
+<text x="480" y="212" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">bulletin/</text>
+<text x="480" y="232" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">src/main/java/.../church/</text>
+</g>
+<g data-node-id="api"><rect x="40" y="352" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="352" width="184" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="364" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="80" y="375" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">BOUNDARY</text>
+<text x="132" y="404" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">api/</text>
+<text x="132" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Controller / DTO</text>
+</g>
+<g data-node-id="application"><rect x="272" y="352" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="272" y="352" width="184" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="284" y="364" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="312" y="375" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">USE CASE</text>
+<text x="364" y="404" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">application/</text>
+<text x="364" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">use case / transaction</text>
+</g>
+<g data-node-id="domain"><rect x="504" y="352" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="504" y="352" width="184" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="516" y="364" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="540" y="375" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">DOMAIN</text>
+<text x="596" y="404" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">domain/</text>
+<text x="596" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Entity / enum / rules</text>
+</g>
+<g data-node-id="infrastructure"><rect x="736" y="352" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="736" y="352" width="184" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="748" y="364" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="774" y="375" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">ADAPTER</text>
+<text x="828" y="404" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">infrastructure/</text>
+<text x="828" y="424" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Repository / adapter</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">선은 하위 패키지의 포함 관계다. 네 책임 사이의 실행 순서나 의존 방향을 새로 가정하지 않는다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+</svg>

@@ -1,0 +1,22 @@
+# OMP 18.3.5; project blog workflow only. Global settings remain unchanged.
+modelRoles:
+  default: openai-codex/gpt-6-astra:high
+  blog-core: openai-codex/gpt-6-astra:high
+  blog-collect: openai-codex/gpt-6-astra:low
+defaultThinkingLevel: high
+prewalk:
+  enabled: false
+retry:
+  modelFallback: false
+task:
+  enableEffort: false
+  agentModelOverrides:
+    blog-researcher: "@blog-collect"
+    blog-tech-reviewer: "@blog-core"
+    blog-ko-editor: "@blog-core"
+    blog-reader: "@blog-core"
+  agentPrewalk:
+    blog-researcher: "off"
+    blog-tech-reviewer: "off"
+    blog-ko-editor: "off"
+    blog-reader: "off"

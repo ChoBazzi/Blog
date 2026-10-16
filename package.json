@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "test": "node --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
     "validate:content": "node scripts/validate-content.mjs",
     "harness:portfolio": "node scripts/portfolio-writing-harness.mjs",

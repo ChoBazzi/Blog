@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>요청 형식에 따라 나누는 vLLM 엔진 — Bazzi Blog</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding:40px 24px;background:#fafaf7;color:#1f2328;font-family:'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif;line-height:1.65;color-scheme:light}
+.frame{width:100%;max-width:1120px;min-width:0;margin:0 auto}
+.eyebrow{font-family:'Geist Mono', ui-monospace, monospace;font-size:11px;letter-spacing:.14em;color:#475467}
+h1{font-family:'Instrument Serif', 'Noto Serif KR', serif;font-weight:400;font-size:32px;line-height:1.3;margin:12px 0 24px}
+.diagram-container{width:100%;overflow-x:auto}
+svg{width:100%;min-width:960px;display:block}
+.footer{font-size:12px;color:#475467;margin-top:20px}
+.summary{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:32px}
+.summary div{border-top:1px solid #e4e7ec;padding-top:12px}
+.summary h2{font-size:16px} .summary p{font-size:14px}
+@media(max-width:600px){body{padding:24px 16px}h1{font-size:28px}.summary{grid-template-columns:1fr}}
+@media print{.diagram-container{overflow-x:visible}svg{min-width:0}}
+</style></head><body><main class="frame"><p class="eyebrow">BAZZI BLOG · ARCHITECTURE</p><h1>요청 형식에 따라 나누는 vLLM 엔진</h1><div class="diagram-container"><svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="vllm-routing-full-title vllm-routing-full-desc">
+<title id="vllm-routing-full-title">요청 형식에 따라 나누는 vLLM 엔진</title>
+<desc id="vllm-routing-full-desc">RunPod handler가 JobInput을 파싱하고 OpenAI route 여부에 따라 vLLMEngine 또는 OpenAIvLLMEngine을 선택한 뒤 AsyncLLM으로 생성하고 streaming 또는 non-streaming 응답을 반환한다.</desc>
+<defs>
+<marker id="vllm-routing-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="vllm-routing-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="vllm-routing-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">RUNPOD / ENGINE ROUTING</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">요청 형식에 따라 나누는 vLLM 엔진</text>
+<path data-edge-from="handler" data-edge-to="routing" d="M 192 320 L 280 320" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#vllm-routing-full-arrow)"/>
+<path data-edge-from="routing" data-edge-to="native" d="M 464 304 L 492 304 Q 500 304 500 296 L 500 232 Q 500 224 508 224 L 536 224" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#vllm-routing-full-arrow)"/>
+<rect data-edge-label="routing-native" x="424" y="236" width="68" height="20" rx="2" fill="#fafaf7"/>
+<text x="458" y="250" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">GENERAL</text>
+<path data-edge-from="routing" data-edge-to="openai" d="M 464 336 L 492 336 Q 500 336 500 344 L 500 408 Q 500 416 508 416 L 536 416" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#vllm-routing-full-arrow-link)"/>
+<rect data-edge-label="routing-openai" x="508" y="340" width="68" height="20" rx="2" fill="#fafaf7"/>
+<text x="542" y="354" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">OPENAI</text>
+<path data-edge-from="native" data-edge-to="generate" d="M 640 272 L 640 296 Q 640 304 648 304 L 760 304" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#vllm-routing-full-arrow)"/>
+<path data-edge-from="openai" data-edge-to="generate" d="M 640 368 L 640 344 Q 640 336 648 336 L 760 336" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#vllm-routing-full-arrow)"/>
+<path data-edge-from="generate" data-edge-to="response" d="M 840 368 L 840 488 Q 840 496 832 496 L 260 496 Q 252 496 252 488 L 252 480" fill="none" stroke="#475467" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#vllm-routing-full-arrow)"/>
+<g data-node-id="handler"><rect x="40" y="272" width="152" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="272" width="152" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="284" width="44" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="74" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">INPUT</text>
+<text x="116" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">RunPod handler</text>
+<text x="116" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">RunPod Serverless</text>
+</g>
+<g data-node-id="routing"><rect x="280" y="272" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="280" y="272" width="184" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="292" y="284" width="48" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="316" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">ROUTER</text>
+<text x="372" y="320" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">입력 파싱</text>
+<text x="372" y="336" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">OpenAI route 판별</text>
+<text x="372" y="356" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">JobInput</text>
+</g>
+<g data-node-id="native"><rect x="536" y="176" width="208" height="96" rx="6" fill="#fafaf7"/><rect x="536" y="176" width="208" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="548" y="188" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="572" y="199" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">ENGINE</text>
+<text x="640" y="228" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">vLLMEngine</text>
+<text x="640" y="248" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">vLLM</text>
+</g>
+<g data-node-id="openai"><rect x="536" y="368" width="208" height="96" rx="6" fill="#fafaf7"/><rect x="536" y="368" width="208" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="548" y="380" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="572" y="391" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">OPENAI</text>
+<text x="640" y="420" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">OpenAIvLLMEngine</text>
+<text x="640" y="440" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">OpenAIServingChat</text>
+<text x="640" y="452" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">OpenAIServingCompletion</text>
+</g>
+<g data-node-id="generate"><rect x="760" y="272" width="160" height="96" rx="6" fill="#fafaf7"/><rect x="760" y="272" width="160" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="772" y="284" width="40" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="792" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">V1</text>
+<text x="840" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">AsyncLLM</text>
+<text x="840" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">generate</text>
+</g>
+<g data-node-id="response"><rect x="40" y="384" width="424" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="384" width="424" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="396" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="80" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">RESPONSE</text>
+<text x="252" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">응답 반환</text>
+<text x="252" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">streaming / non-streaming</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">생성 요청의 개념 경로 · 입력 형식별 엔진 책임과 두 응답 모드를 구분한다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+<line x1="560" y1="566" x2="600" y2="566" stroke="#475467" stroke-dasharray="5,4"/>
+<text x="612" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">생성 결과 반환</text>
+</svg></div><section class="summary"><div><h2>호환 계층의 책임</h2><p>일반 vLLM 요청과 OpenAI 호환 요청은 서로 다른 엔진 래퍼에서 처리한다. OpenAI wrapper는 /v1/models, /v1/chat/completions, /v1/completions route를 담당한다.</p></div><div><h2>버전과 범위</h2><p>본문의 고정 버전은 vLLM 0.14.0, transformers 4.51.3, torch 2.6.0이다. 이 그림은 생성 요청의 흐름이며 모델 목록 조회까지 generate를 호출한다고 뜻하지 않는다.</p></div></section><p class="footer">독립 파일에서는 NanumSquare가 없을 때 시스템 글꼴로 대체된다.</p></main></body></html>

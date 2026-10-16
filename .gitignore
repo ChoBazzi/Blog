@@ -54,3 +54,6 @@ skills/*
 
 # Local Docker overrides
 docker-compose.override.yml
+
+# Private blog evidence and candidates
+.blog-work/

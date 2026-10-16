@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bizkit-task-states-dark-title bizkit-task-states-dark-desc" id="bizkit-task-states-dark-root">
+<title id="bizkit-task-states-dark-title">작업 상태: 정상 완료와 실패의 분기</title>
+<desc id="bizkit-task-states-dark-desc">작업은 pending에서 running으로 진행하고, 실행 결과에 따라 completed 또는 failed로 나뉘며 세부 진행 단계는 별도 progress 필드로 관리한다.</desc>
+<defs>
+      <style>#bizkit-task-states-dark-root { color: #f3f6fb; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #bizkit-task-states-dark-root .diagram-container { width:100%;overflow-x:auto }
+      #bizkit-task-states-dark-root .diagram-container { overflow-x:visible }</style>
+<marker id="bizkit-task-states-dark-bizkit-task-states-dark-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#b5bfce"/></marker>
+<marker id="bizkit-task-states-dark-bizkit-task-states-dark-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7aa2ff"/></marker>
+<marker id="bizkit-task-states-dark-bizkit-task-states-dark-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7aa2ff"/></marker>
+</defs>
+<rect width="960" height="600" fill="#0f1117"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">BIZKIT / TASK STATUS</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#f3f6fb">작업 상태: 정상 완료와 실패의 분기</text>
+<path data-edge-from="pending" data-edge-to="running" d="M 248 248 L 360 248" fill="none" stroke="#b5bfce" stroke-width="1" marker-end="url(#bizkit-task-states-dark-bizkit-task-states-dark-arrow)"/>
+<rect data-edge-label="pending-running" x="272" y="220" width="64" height="20" rx="2" fill="#0f1117"/>
+<text x="304" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">START</text>
+<path data-edge-from="running" data-edge-to="completed" d="M 528 248 L 704 248" fill="none" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#bizkit-task-states-dark-bizkit-task-states-dark-arrow-accent)"/>
+<rect data-edge-label="running-completed" x="576" y="220" width="80" height="20" rx="2" fill="#0f1117"/>
+<text x="616" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">COMPLETE</text>
+<path data-edge-from="running" data-edge-to="failed" d="M 444 296 L 444 424 Q 444 432 452 432 L 704 432" fill="none" stroke="#b5bfce" stroke-width="1" marker-end="url(#bizkit-task-states-dark-bizkit-task-states-dark-arrow)"/>
+<rect data-edge-label="running-failed" x="560" y="404" width="64" height="20" rx="2" fill="#0f1117"/>
+<text x="592" y="418" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#8b95a7">FAIL</text>
+<g data-node-id="pending"><rect x="80" y="200" width="168" height="96" rx="8" fill="#0f1117"/><rect x="80" y="200" width="168" height="96" rx="8" fill="#151922" stroke="#b5bfce" stroke-width="1"/>
+<rect x="92" y="212" width="52" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="118" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">WAITING</text>
+<text x="164" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">pending</text>
+<text x="164" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">TaskStatus</text>
+</g>
+<g data-node-id="running"><rect x="360" y="200" width="168" height="96" rx="8" fill="#0f1117"/><rect x="360" y="200" width="168" height="96" rx="8" fill="#0f1117" stroke="#b5bfce" stroke-width="1"/>
+<rect x="372" y="212" width="48" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="396" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">ACTIVE</text>
+<text x="444" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">running</text>
+<text x="444" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">TaskStatus</text>
+</g>
+<g data-node-id="completed"><rect x="704" y="200" width="176" height="96" rx="8" fill="#0f1117"/><rect x="704" y="200" width="176" height="96" rx="8" fill="#17233d" stroke="#7aa2ff" stroke-width="1.2"/>
+<rect x="716" y="212" width="56" height="16" rx="2" fill="#0f1117" stroke="#7aa2ff" stroke-width="0.8"/>
+<text x="744" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#7aa2ff">TERMINAL</text>
+<text x="792" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">completed</text>
+<text x="792" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">TaskStatus</text>
+</g>
+<g data-node-id="failed"><rect x="704" y="384" width="176" height="96" rx="8" fill="#0f1117"/><rect x="704" y="384" width="176" height="96" rx="8" fill="#151922" stroke="#b5bfce" stroke-width="1"/>
+<rect x="716" y="396" width="56" height="16" rx="2" fill="#0f1117" stroke="#b5bfce" stroke-width="0.8"/>
+<text x="744" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#b5bfce">TERMINAL</text>
+<text x="792" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#f3f6fb">failed</text>
+<text x="792" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#b5bfce">TaskStatus</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">정상 처리·실패의 개념도이며 완전한 복구 명세가 아니다. 세부 진행 단계는 별도 progress 필드로 관리한다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#2a3343"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#17233d" stroke="#7aa2ff"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#b5bfce"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#b5bfce">관계·흐름</text>
+</svg>

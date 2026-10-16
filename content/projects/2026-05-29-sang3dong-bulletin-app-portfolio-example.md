@@ -45,17 +45,7 @@ published: false
 
 전체 흐름은 다음과 같이 나누었습니다.
 
-```text
-관리/수집 단계
-  -> Django Backend
-  -> 주보 데이터 정리
-  -> 모바일 앱에서 조회 가능한 형태로 제공
-
-사용자 단계
-  -> React Native App 실행
-  -> 최신 주보 확인
-  -> PDF 주보 열람
-```
+![성당 앱 v1: 준비와 열람의 두 단계](/diagrams/church-v1-flow.svg)
 
 프론트엔드는 React Native로 구현했습니다. 성당 교우들이 사용하는 기기가 다양할 수 있기 때문에, Android 앱으로 배포 가능한 모바일 구조가 필요했습니다. 주보 파일은 PDF 형태였기 때문에 React-Native-PDF를 사용해 앱 안에서 바로 열람할 수 있도록 구성했습니다.
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="home-server-after-title home-server-after-desc" id="home-server-after-root">
+<title id="home-server-after-title">Proxmox에서 NAS와 앱 실행 환경 분리</title>
+<desc id="home-server-after-desc">Proxmox 아래에 Xpenology NAS VM과 Docker Host를 분리하고 Web과 API를 Docker에서 운영하는 방향이며, 데이터베이스는 Docker 또는 별도 LXC 배치를 검토 중이다.</desc>
+<defs>
+      <style>#home-server-after-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #home-server-after-root .diagram-container { width:100%;overflow-x:auto }
+      #home-server-after-root .diagram-container { overflow-x:visible }</style>
+<marker id="home-server-after-home-server-after-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="home-server-after-home-server-after-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="home-server-after-home-server-after-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">HOME SERVER / ROLE SEPARATION</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">Proxmox에서 NAS와 앱 실행 환경 분리</text>
+<path data-edge-from="proxmox" data-edge-to="nas" d="M 216 304 L 400 304 Q 408 304 408 296 L 408 256" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-after-home-server-after-arrow)"/>
+<path data-edge-from="proxmox" data-edge-to="host" d="M 216 336 L 248 336 Q 256 336 256 344 L 256 360 Q 256 368 264 368 L 304 368" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-after-home-server-after-arrow)"/>
+<path data-edge-from="host" data-edge-to="web" d="M 512 344 L 560 344 Q 568 344 568 336 L 568 216 Q 568 208 576 208 L 704 208" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-after-home-server-after-arrow)"/>
+<path data-edge-from="host" data-edge-to="api" d="M 512 368 L 592 368 Q 600 368 600 360 L 600 328 Q 600 320 608 320 L 704 320" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#home-server-after-home-server-after-arrow)"/>
+<path data-edge-from="host" data-edge-to="db" d="M 512 392 L 624 392 Q 632 392 632 400 L 632 424 Q 632 432 640 432 L 704 432" fill="none" stroke="#475467" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#home-server-after-home-server-after-arrow)"/>
+<rect data-edge-label="host-db" x="640" y="404" width="64" height="20" rx="2" fill="#fafaf7"/>
+<text x="672" y="418" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="500" fill="#667085">검토 중</text>
+<g data-node-id="proxmox"><rect x="40" y="272" width="176" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="272" width="176" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="52" y="284" width="68" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="86" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">HYPERVISOR</text>
+<text x="128" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Proxmox</text>
+<text x="128" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Ryzen 5 5600G</text>
+</g>
+<g data-node-id="nas"><rect x="304" y="160" width="208" height="96" rx="6" fill="#fafaf7"/><rect x="304" y="160" width="208" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="316" y="172" width="40" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="336" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">VM</text>
+<text x="408" y="212" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Xpenology VM</text>
+<text x="408" y="232" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">NAS</text>
+</g>
+<g data-node-id="host"><rect x="304" y="320" width="208" height="96" rx="6" fill="#fafaf7"/><rect x="304" y="320" width="208" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="316" y="332" width="56" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="344" y="343" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">APP HOST</text>
+<text x="408" y="372" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Docker Host</text>
+<text x="408" y="392" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">LXC / VM</text>
+</g>
+<g data-node-id="web"><rect x="704" y="160" width="216" height="96" rx="6" fill="#fafaf7"/><rect x="704" y="160" width="216" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="716" y="172" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="742" y="183" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">SERVICE</text>
+<text x="812" y="212" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Web</text>
+<text x="812" y="232" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Docker container</text>
+</g>
+<g data-node-id="api"><rect x="704" y="272" width="216" height="96" rx="6" fill="#fafaf7"/><rect x="704" y="272" width="216" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="716" y="284" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="742" y="295" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">SERVICE</text>
+<text x="812" y="324" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">API</text>
+<text x="812" y="344" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Docker container</text>
+</g>
+<g data-node-id="db"><rect x="704" y="384" width="216" height="96" rx="6" fill="#fafaf7"/><rect x="704" y="384" width="216" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="716" y="396" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="740" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">OPTION</text>
+<text x="812" y="432" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Database</text>
+<text x="812" y="448" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">배치 검토 중</text>
+<text x="812" y="468" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Docker / separate LXC</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">역할 분리 방향을 그린 개념도 · DB의 Docker / 별도 LXC 배치는 미정이며 디스크 위치도 나타내지 않는다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+<line x1="560" y1="566" x2="600" y2="566" stroke="#475467" stroke-dasharray="5,4"/>
+<text x="612" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">검토 중인 배치</text>
+</svg>

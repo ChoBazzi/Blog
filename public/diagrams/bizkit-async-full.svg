@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bizkit-async-full-title bizkit-async-full-desc" id="bizkit-async-full-root">
+<title id="bizkit-async-full-title">요청 접수와 모델 실행의 분리</title>
+<desc id="bizkit-async-full-desc">FastAPI가 작업을 접수하면 Redis Streams와 Worker가 모델 호출·후처리를 수행하고, 클라이언트는 작업 ID로 상태와 결과를 조회한다.</desc>
+<defs>
+      <style>#bizkit-async-full-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #bizkit-async-full-root .diagram-container { width:100%;overflow-x:auto }
+      #bizkit-async-full-root .diagram-container { overflow-x:visible }</style>
+<marker id="bizkit-async-full-bizkit-async-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="bizkit-async-full-bizkit-async-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="bizkit-async-full-bizkit-async-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">BIZKIT / ASYNC WORKFLOW</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">요청 접수와 모델 실행의 분리</text>
+<path data-edge-from="client" data-edge-to="api" d="M 192 248 L 272 248" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#bizkit-async-full-bizkit-async-full-arrow-link)"/>
+<rect data-edge-label="client-api" x="196" y="220" width="72" height="20" rx="2" fill="#fafaf7"/>
+<text x="232" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">SUBMIT / POLL</text>
+<path data-edge-from="api" data-edge-to="queue" d="M 456 248 L 536 248" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-async-full-bizkit-async-full-arrow)"/>
+<rect data-edge-label="api-queue" x="464" y="220" width="64" height="20" rx="2" fill="#fafaf7"/>
+<text x="496" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">ENQUEUE</text>
+<path data-edge-from="queue" data-edge-to="worker" d="M 704 248 L 784 248" fill="none" stroke="#475467" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#bizkit-async-full-bizkit-async-full-arrow)"/>
+<rect data-edge-label="queue-worker" x="712" y="220" width="64" height="20" rx="2" fill="#fafaf7"/>
+<text x="744" y="234" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">CONSUME</text>
+<path data-edge-from="worker" data-edge-to="model" d="M 852 296 L 852 392" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-async-full-bizkit-async-full-arrow)"/>
+<path data-edge-from="model" data-edge-to="state" d="M 784 440 L 704 440" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-async-full-bizkit-async-full-arrow)"/>
+<path data-edge-from="state" data-edge-to="api" d="M 520 440 L 372 440 Q 364 440 364 432 L 364 296" fill="none" stroke="#475467" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#bizkit-async-full-bizkit-async-full-arrow)"/>
+<rect data-edge-label="state-api" x="400" y="412" width="84" height="20" rx="2" fill="#fafaf7"/>
+<text x="442" y="426" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">READ RESULT</text>
+<path data-edge-from="api" data-edge-to="client" d="M 364 200 L 364 136 Q 364 128 356 128 L 124 128 Q 116 128 116 136 L 116 200" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#bizkit-async-full-bizkit-async-full-arrow-link)"/>
+<rect data-edge-label="api-client" x="196" y="100" width="88" height="20" rx="2" fill="#fafaf7"/>
+<text x="240" y="114" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">ID / RESULT</text>
+<g data-node-id="client"><rect x="40" y="200" width="152" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="200" width="152" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="212" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="76" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">CLIENT</text>
+<text x="116" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">클라이언트</text>
+<text x="116" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">task_id</text>
+</g>
+<g data-node-id="api"><rect x="272" y="200" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="272" y="200" width="184" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="284" y="212" width="40" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="304" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">API</text>
+<text x="364" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">FastAPI</text>
+<text x="364" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">submit / poll</text>
+</g>
+<g data-node-id="queue"><rect x="536" y="200" width="168" height="96" rx="6" fill="#fafaf7"/><rect x="536" y="200" width="168" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="548" y="212" width="44" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="570" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">QUEUE</text>
+<text x="620" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Redis Streams</text>
+<text x="620" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">task queue</text>
+</g>
+<g data-node-id="worker"><rect x="784" y="200" width="136" height="96" rx="6" fill="#fafaf7"/><rect x="784" y="200" width="136" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="796" y="212" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="820" y="223" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">WORKER</text>
+<text x="852" y="252" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Worker</text>
+<text x="852" y="272" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">consumer</text>
+</g>
+<g data-node-id="model"><rect x="784" y="392" width="136" height="96" rx="6" fill="#fafaf7"/><rect x="784" y="392" width="136" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="796" y="404" width="44" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="818" y="415" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">MODEL</text>
+<text x="852" y="444" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">모델 호출·후처리</text>
+<text x="852" y="464" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">generate + parse</text>
+</g>
+<g data-node-id="state"><rect x="520" y="392" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="520" y="392" width="184" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="532" y="404" width="44" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="554" y="415" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">STATE</text>
+<text x="612" y="444" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">상태·결과 저장</text>
+<text x="612" y="464" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">status / result</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">비동기 경로의 개념도 · 실제 네트워크 홉과 장애 복구 보장은 포함하지 않는다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+<line x1="560" y1="566" x2="600" y2="566" stroke="#475467" stroke-dasharray="5,4"/>
+<text x="612" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">작업 소비·조회 응답</text>
+</svg>

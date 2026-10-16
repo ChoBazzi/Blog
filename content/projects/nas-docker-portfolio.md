@@ -36,13 +36,7 @@ published: false
 - Dockerfile은 standalone Next.js 서버를 생성한다.
 - NAS 리버스 프록시는 컨테이너의 `3000` 포트로 트래픽을 전달한다.
 
-```text
-Obsidian Markdown
-  -> content/
-  -> Next.js static build
-  -> Vercel public deploy
-  -> Docker/NAS deploy experiment
-```
+![공개 배포와 NAS 운영 실험을 별도 경로로](/diagrams/blog-publishing.svg)
 
 ## 판단과 트레이드오프
 

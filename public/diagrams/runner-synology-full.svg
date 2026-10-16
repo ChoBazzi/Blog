@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="runner-synology-full-title runner-synology-full-desc" id="runner-synology-full-root">
+<title id="runner-synology-full-title">NAS에서 GitHub로 연결하는 Runner</title>
+<desc id="runner-synology-full-desc">Runner 컨테이너가 GitHub로 outbound HTTPS 443 연결을 만들고 작업을 받아 Docker socket으로 Synology Docker Engine 20.10.3 및 API 1.41을 사용하며 임시 PostgreSQL 17.10 CI 데이터베이스를 실행한다.</desc>
+<defs>
+      <style>#runner-synology-full-root { color: #1f2328; font-family: 'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif; }
+      #runner-synology-full-root .diagram-container { width:100%;overflow-x:auto }
+      #runner-synology-full-root .diagram-container { overflow-x:visible }</style>
+<marker id="runner-synology-full-runner-synology-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="runner-synology-full-runner-synology-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="runner-synology-full-runner-synology-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">GITHUB ACTIONS / SYNOLOGY RUNTIME</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">NAS에서 GitHub로 연결하는 Runner</text>
+<rect x="344" y="140" width="592" height="356" rx="8" fill="#f6f7f8" stroke="#e4e7ec"/>
+<text x="360" y="160" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="500" fill="#667085">SYNOLOGY NAS / DOCKER</text>
+<path data-edge-from="runner" data-edge-to="github" d="M 368 208 L 248 208" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#runner-synology-full-runner-synology-full-arrow-link)"/>
+<rect data-edge-label="runner-github" x="264" y="180" width="72" height="20" rx="2" fill="#fafaf7"/>
+<text x="300" y="194" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">HTTPS 443</text>
+<path data-edge-from="github" data-edge-to="runner" d="M 248 240 L 368 240" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#runner-synology-full-runner-synology-full-arrow-link)"/>
+<rect data-edge-label="github-runner" x="264" y="248" width="72" height="20" rx="2" fill="#fafaf7"/>
+<text x="300" y="262" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">JOB DELIVERY</text>
+<path data-edge-from="runner" data-edge-to="socket" d="M 608 224 L 704 224" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#runner-synology-full-runner-synology-full-arrow)"/>
+<rect data-edge-label="runner-socket" x="612" y="196" width="88" height="20" rx="2" fill="#fafaf7"/>
+<text x="656" y="210" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">DOCKER CLI</text>
+<path data-edge-from="socket" data-edge-to="engine" d="M 812 272 L 812 384" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#runner-synology-full-runner-synology-full-arrow-link)"/>
+<rect data-edge-label="socket-engine" x="820" y="316" width="80" height="20" rx="2" fill="#fafaf7"/>
+<text x="860" y="330" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">API 1.41</text>
+<path data-edge-from="engine" data-edge-to="postgres" d="M 704 432 L 608 432" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#runner-synology-full-runner-synology-full-arrow)"/>
+<rect data-edge-label="engine-postgres" x="612" y="404" width="88" height="20" rx="2" fill="#fafaf7"/>
+<text x="656" y="418" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">DOCKER RUN</text>
+<g data-node-id="github"><rect x="40" y="176" width="208" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="176" width="208" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="52" y="188" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="76" y="199" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">GITHUB</text>
+<text x="144" y="228" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">GitHub Actions</text>
+<text x="144" y="248" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Private repository</text>
+</g>
+<g data-node-id="runner"><rect x="368" y="176" width="240" height="96" rx="6" fill="#fafaf7"/><rect x="368" y="176" width="240" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="380" y="188" width="48" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="404" y="199" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">RUNNER</text>
+<text x="488" y="228" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Runner container</text>
+<text x="488" y="248" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Ubuntu 24.04 / private-ci</text>
+<text x="488" y="260" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">Runner 2.336.0</text>
+</g>
+<g data-node-id="socket"><rect x="704" y="176" width="216" height="96" rx="6" fill="#fafaf7"/><rect x="704" y="176" width="216" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="716" y="188" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="740" y="199" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">SOCKET</text>
+<text x="812" y="228" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Docker socket</text>
+<text x="812" y="248" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">/var/run/docker.sock</text>
+</g>
+<g data-node-id="engine"><rect x="704" y="384" width="216" height="96" rx="6" fill="#fafaf7"/><rect x="704" y="384" width="216" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="716" y="396" width="40" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="736" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">HOST</text>
+<text x="812" y="436" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">Docker Engine</text>
+<text x="812" y="456" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">20.10.3 / API 1.41</text>
+</g>
+<g data-node-id="postgres"><rect x="368" y="384" width="240" height="96" rx="6" fill="#fafaf7"/><rect x="368" y="384" width="240" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="380" y="396" width="56" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="408" y="407" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">DATABASE</text>
+<text x="488" y="432" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">임시 PostgreSQL 17.10</text>
+<text x="488" y="448" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">CI 데이터베이스</text>
+<text x="488" y="468" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">docker run</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">HTTPS 연결은 Runner가 먼저 시작한다. 작업 수신은 그 연결의 응답이며 NAS 포트포워딩은 필요하지 않다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+<line x1="560" y1="566" x2="600" y2="566" stroke="#475467" stroke-dasharray="5,4"/>
+<text x="612" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">작업 전달 응답</text>
+</svg>

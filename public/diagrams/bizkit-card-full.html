@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>명함 배경 생성과 텍스트 렌더링의 분리 — Bazzi Blog</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding:40px 24px;background:#fafaf7;color:#1f2328;font-family:'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif;line-height:1.65;color-scheme:light}
+.frame{width:100%;max-width:1120px;min-width:0;margin:0 auto}
+.eyebrow{font-family:'Geist Mono', ui-monospace, monospace;font-size:11px;letter-spacing:.14em;color:#475467}
+h1{font-family:'Instrument Serif', 'Noto Serif KR', serif;font-weight:400;font-size:32px;line-height:1.3;margin:12px 0 24px}
+.diagram-container{width:100%;overflow-x:auto}
+svg{width:100%;min-width:960px;display:block}
+.footer{font-size:12px;color:#475467;margin-top:20px}
+.summary{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:32px}
+.summary div{border-top:1px solid #e4e7ec;padding-top:12px}
+.summary h2{font-size:16px} .summary p{font-size:14px}
+@media(max-width:600px){body{padding:24px 16px}h1{font-size:28px}.summary{grid-template-columns:1fr}}
+@media print{.diagram-container{overflow-x:visible}svg{min-width:0}}
+</style></head><body><main class="frame"><p class="eyebrow">BAZZI BLOG · FLOWCHART</p><h1>명함 배경 생성과 텍스트 렌더링의 분리</h1><div class="diagram-container"><svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bizkit-card-full-title bizkit-card-full-desc">
+<title id="bizkit-card-full-title">명함 배경 생성과 텍스트 렌더링의 분리</title>
+<desc id="bizkit-card-full-desc">스타일 요청을 프롬프트와 레이아웃으로 구성하고 SDXL로 배경을 생성한 뒤, 별도 렌더링 단계에서 이름과 연락처를 배치한다.</desc>
+<defs>
+<marker id="bizkit-card-full-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#475467"/></marker>
+<marker id="bizkit-card-full-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+<marker id="bizkit-card-full-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2563eb"/></marker>
+</defs>
+<rect width="960" height="600" fill="#fafaf7"/>
+<text x="40" y="48" text-anchor="start" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#667085">BIZKIT / CARD GENERATION</text>
+<text x="40" y="84" text-anchor="start" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="28" font-weight="400" fill="#1f2328">명함 배경 생성과 텍스트 렌더링의 분리</text>
+<path data-edge-from="style" data-edge-to="compose" d="M 192 312 L 272 312" fill="none" stroke="#475467" stroke-width="1" marker-end="url(#bizkit-card-full-arrow)"/>
+<path data-edge-from="compose" data-edge-to="background" d="M 456 312 L 536 312" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#bizkit-card-full-arrow-accent)"/>
+<path data-edge-from="background" data-edge-to="text" d="M 704 312 L 784 312" fill="none" stroke="#2563eb" stroke-width="1.2" marker-end="url(#bizkit-card-full-arrow-accent)"/>
+<g data-node-id="style"><rect x="40" y="264" width="152" height="96" rx="6" fill="#fafaf7"/><rect x="40" y="264" width="152" height="96" rx="6" fill="#f6f7f8" stroke="#475467" stroke-width="1"/>
+<rect x="52" y="276" width="44" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="74" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">INPUT</text>
+<text x="116" y="316" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">스타일 요청·입력</text>
+<text x="116" y="336" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">style input</text>
+</g>
+<g data-node-id="compose"><rect x="272" y="264" width="184" height="96" rx="6" fill="#fafaf7"/><rect x="272" y="264" width="184" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="284" y="276" width="52" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="310" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">COMPOSE</text>
+<text x="364" y="312" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">프롬프트·레이아웃</text>
+<text x="364" y="328" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">구성</text>
+<text x="364" y="348" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">prompt / layout</text>
+</g>
+<g data-node-id="background"><rect x="536" y="264" width="168" height="96" rx="6" fill="#fafaf7"/><rect x="536" y="264" width="168" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="548" y="276" width="44" height="16" rx="2" fill="#fafaf7" stroke="#2563eb" stroke-width="0.8"/>
+<text x="570" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#2563eb">MODEL</text>
+<text x="620" y="316" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">SDXL 배경 생성</text>
+<text x="620" y="336" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">background image</text>
+</g>
+<g data-node-id="text"><rect x="784" y="264" width="136" height="96" rx="6" fill="#fafaf7"/><rect x="784" y="264" width="136" height="96" rx="6" fill="#fafaf7" stroke="#475467" stroke-width="1"/>
+<rect x="796" y="276" width="48" height="16" rx="2" fill="#fafaf7" stroke="#475467" stroke-width="0.8"/>
+<text x="820" y="287" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="8" font-weight="400" fill="#475467">RENDER</text>
+<text x="852" y="316" text-anchor="middle" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="700" fill="#1f2328">텍스트 렌더링</text>
+<text x="852" y="336" text-anchor="middle" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" font-weight="400" fill="#475467">name / contact</text>
+</g>
+<text x="40" y="520" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">텍스트 렌더링은 파이프라인 내부 단계다. 독립 서비스 배포나 최종 이미지의 가독성 보장을 뜻하지 않는다.</text>
+<line x1="40" y1="540" x2="920" y2="540" stroke="#e4e7ec"/>
+<rect x="40" y="560" width="12" height="12" rx="2" fill="#eff6ff" stroke="#2563eb"/>
+<text x="64" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">중점 구성요소</text>
+<line x1="300" y1="566" x2="340" y2="566" stroke="#475467"/>
+<text x="352" y="571" text-anchor="start" font-family="'NanumSquare', 'NanumSquare Neo', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif" font-size="12" font-weight="400" fill="#475467">관계·흐름</text>
+</svg></div><section class="summary"><div><h2>모델의 역할 제한</h2><p>이미지 모델은 배경을 만들고 이름과 연락처는 별도 렌더러가 배치하도록 나눴다.</p></div><div><h2>남는 검증 책임</h2><p>텍스트를 분리해도 입력 오타와 잘림·줄바꿈은 별도로 확인해야 한다.</p></div></section><p class="footer">독립 파일에서는 NanumSquare가 없을 때 시스템 글꼴로 대체된다.</p></main></body></html>

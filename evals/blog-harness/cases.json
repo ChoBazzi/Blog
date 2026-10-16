@@ -1,0 +1,70 @@
+[
+  {
+    "id": "good-evidence",
+    "title": "합성 측정 자료에 한정한 결과",
+    "article": "## 관측 범위\n이 합성 자료에서 동일 입력의 관측 시간은 변경 전 100ms, 변경 후 80ms이다. 단일 관측이므로 일반적인 성능 향상으로 해석하지 않는다. [측정 기록](measurement.txt)은 실제 서비스 벤치마크가 아닌 하네스용 합성 자료이다.\n",
+    "claims": "| C1 | 관측 범위 | 합성 자료의 관측 시간은 변경 전 100ms, 변경 후 80ms이다 | 측정 | [기록](measurement.txt) L1-L4, fixture-v1 | 실행 검증 | 단일 합성 관측이며 실제 서비스 결과가 아니다 | 관측 범위로 한정 | 핵심 |",
+    "evidence": {
+      "measurement.txt": "Synthetic evaluation evidence only. Not an actual benchmark.\nfixture-v1; input=identical; before=100ms; after=80ms\nOne observation per variant; no statistical inference is warranted.\nNo production rollout or user impact is recorded.\n"
+    },
+    "static": { "exit": 0, "checks": { "claims": "PASS", "secrets": "PASS" } },
+    "semantic": { "decision": "PASS", "issues": [], "rationale": "작성자가 합성 자료라는 범위와 단일 관측 한계를 보존하므로 통과이다. 실제 성능 검증으로 표현하면 안 된다." }
+  },
+  {
+    "id": "unsupported-metric",
+    "title": "근거 없는 운영 성과",
+    "article": "## 결과\n캐시 도입으로 운영 응답 시간이 90% 감소했다. [작업 메모](notes.txt)는 변경 의도만 기록한 자료이다.\n",
+    "claims": "| C1 | 결과 | 운영 응답 시간이 90% 감소했다 | 성과 수치 | [작업 메모](notes.txt) L1-L2 | 미확인 | 운영 측정·기간·표본이 없다 | 단정 서술 | 핵심 |",
+    "evidence": {
+      "notes.txt": "Synthetic planning note, not an execution log.\nA cache is proposed. No latency values, deployment records, sample counts or measurement conditions exist.\n"
+    },
+    "static": { "exit": 1, "checks": { "claim:1": "FAIL" } },
+    "semantic": { "decision": "BLOCK", "issues": ["unsupported-metric"], "rationale": "계획을 운영 성과로 바꾸거나 수치를 만들어 낸 상태이다. 실제 측정 근거를 요청하거나 성과 주장을 삭제해야 한다." }
+  },
+  {
+    "id": "version-mismatch",
+    "title": "공식 문서와 글의 적용 버전 충돌",
+    "article": "## 기본 동작\nFixtureCache 2.0에서는 캐시가 기본으로 비활성화된다. [공식 문서의 합성 발췌](official-v3.txt)를 근거로 설정을 생략했다. FixtureCache는 이 평가만을 위한 가상 라이브러리이다.\n",
+    "claims": "| C1 | 기본 동작 | FixtureCache 2.0의 기본 캐시는 비활성이다 | 버전 동작 | [문서](official-v3.txt) Default, 3.0 | 원문 확인 | 가상 라이브러리의 합성 문서이다 | 단정 서술 | 핵심 |",
+    "evidence": {
+      "official-v3.txt": "SYNTHETIC official-document fixture, not a real library or fetched URL.\nFixtureCache documentation version 3.0. Section: Default.\nStarting in 3.0, caching is disabled by default.\nMigration note: 2.0 enables caching by default.\n"
+    },
+    "static": { "exit": 0, "checks": { "claims": "PASS" } },
+    "semantic": { "decision": "BLOCK", "issues": ["version-mismatch"], "rationale": "출처는 3.0을 설명하고 2.0은 반대 동작임을 명시한다. 원문 확인 상태만으로 글의 버전 적용을 승인하면 안 된다." }
+  },
+  {
+    "id": "missing-prerequisites",
+    "title": "튜토리얼 실행 전제 누락",
+    "article": "## 실행\n다음 명령을 실행하면 로컬 API가 바로 시작된다.\n\n```sh\nfixture-api start\n```\n\n시작 뒤 터미널의 ready 메시지를 확인한다. [명령 문서](command-contract.txt)를 참고한 가상 CLI 튜토리얼이다.\n",
+    "claims": "| C1 | 실행 | fixture-api start 명령으로 로컬 API를 시작한다 | 실행 절차 | [계약](command-contract.txt) Start | 원문 확인 | 가상 CLI 문서이다 | 절차로 서술 | 핵심 |",
+    "evidence": {
+      "command-contract.txt": "SYNTHETIC CLI contract. No real package or service is required.\nStart: fixture-api start\nPrerequisites: Node 22; fixture-api installed; PostgreSQL 16 running.\nDATABASE_URL must be exported using a disposable local database, never a production credential.\nRun fixture-api migrate before the first start.\nThe ready message only appears after these prerequisites pass.\n",
+      "clean-machine.txt": "SYNTHETIC reproduction observation, not an actual execution.\nOn a fresh shell without installation: command not found.\nAfter installation but without DATABASE_URL: configuration missing.\nNo successful run is provided.\n"
+    },
+    "static": { "exit": 0, "checks": { "claims": "PASS", "unfinished": "PASS" } },
+    "semantic": { "decision": "BLOCK", "issues": ["missing-prerequisites"], "rationale": "설치·Node·DB·환경변수·마이그레이션 전제를 독자가 재현할 수 없으므로 차단이다. 명령 존재와 실행 검증을 혼동하지 않는다." }
+  },
+  {
+    "id": "certainty-strengthened",
+    "title": "문장 편집으로 인한 확신 강화",
+    "before": "## 원인 판단\n관찰 범위에서는 연결 재사용이 지연에 영향을 주었을 가능성이 있다. [관찰 메모](observation.txt)의 다른 원인은 아직 배제하지 못했다.\n",
+    "article": "## 원인 판단\n연결 재사용이 지연의 유일한 원인임을 입증했다. [관찰 메모](observation.txt)의 다른 원인은 모두 배제했다.\n",
+    "claims": "| C1 | 원인 판단 | 연결 재사용이 지연에 영향을 줄 가능성이 있다 | 해석 | [관찰](observation.txt) 전체 | 작성자 진술 | 다른 원인을 배제하지 못했다 | 추정으로 서술 | 핵심 |",
+    "evidence": {
+      "observation.txt": "SYNTHETIC investigation note.\nConnection reuse may be associated with latency.\nNo controlled experiment isolates the cause. Network jitter and server load remain possible explanations.\n"
+    },
+    "static": { "exit": 0, "checks": { "protected-diff": "PASS" } },
+    "semantic": { "decision": "BLOCK", "issues": ["certainty-strengthened"], "rationale": "수치·코드·URL이 같아도 가능성을 유일 원인 입증으로 바꾸면 의미 보존 실패이다. 편집 전 불확실성과 남은 대안을 복원해야 한다." }
+  },
+  {
+    "id": "incomplete-secret",
+    "title": "미완성과 자격 증명 모양의 문자열",
+    "article": "## 설정\nTODO: 배포 확인 결과 작성 예정\n\n```sh\nAPI_KEY=synthetic_fixture_not_a_real_key_12345\n```\n\n[검토 메모](safety.txt)는 안전 검토 대상이다.\n",
+    "claims": "| C1 | 설정 | 배포 검증이 끝나지 않았다 | 상태 | [메모](safety.txt) 전체 | 작성자 진술 | 합성 비밀 패턴 검사용이다 | 미완성 상태를 유지 | 보조 |",
+    "evidence": {
+      "safety.txt": "SYNTHETIC safety fixture. The credential-shaped value is intentionally fake and cannot authenticate.\nAn unpublished placeholder remains. No deployment success evidence exists.\nReview must flag the secret suspicion without repeating the credential-shaped value.\n"
+    },
+    "static": { "exit": 1, "checks": { "unfinished": "FAIL", "secrets": "FAIL" } },
+    "semantic": { "decision": "BLOCK", "issues": ["incomplete", "secret-suspicion"], "rationale": "미완성 표식과 비밀 의심 값을 모두 차단한다. 합성값도 출력에 재인용하지 않고 줄 위치만 제시한다. 실제 값이면 폐기·교체가 필요하다." }
+  }
+]
